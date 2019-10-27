@@ -1,0 +1,22 @@
+
+pause
+
+loop {
+
+    waitrt?
+    put "feint"
+    pause
+
+    waitrt?
+    put "feint"
+    pause
+
+    waitrt?
+    put "feint"
+    pause
+
+    waitrt?
+    put "skin"
+    pause
+
+}

@@ -1,0 +1,25 @@
+
+loop {
+
+
+    pause
+    waitrt?
+    put "prep symbiosis"
+
+    pause
+    waitrt?
+    put "invoke tattoo"
+
+    pause
+    waitrt?
+    put "charge my cambrinth prism 5"
+
+    pause
+    waitrt?
+    put "invoke my cambrinth prism"
+
+    waitfor "fully prepared to cast"
+    pause 5
+    put "cast"
+
+}

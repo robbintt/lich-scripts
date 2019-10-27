@@ -1,0 +1,19 @@
+
+pause
+
+loop {
+
+
+    waitrt?
+    put "circle"
+    pause
+
+    waitrt?
+    put "elbow"
+    pause
+
+    waitrt?
+    put "skin"
+    pause
+
+}

@@ -1,0 +1,11 @@
+
+loop {
+
+    pause
+
+    waitrt?
+    put "lock my tr box"
+    waitrt?
+    put "pick my tr box"
+
+}

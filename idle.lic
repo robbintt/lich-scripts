@@ -1,0 +1,7 @@
+
+loop {
+
+    pause 30
+    put "ex"
+
+}

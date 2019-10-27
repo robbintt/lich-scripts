@@ -1,0 +1,14 @@
+
+loop {
+
+    pause
+
+    waitrt?
+    put "prep symbiosis"
+    waitrt?
+    put "prep pg 21"
+    waitfor "fully prepared to cast"
+    pause 5
+    put "cast"
+
+}

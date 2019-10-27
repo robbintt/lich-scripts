@@ -1,0 +1,31 @@
+
+
+pause
+waitrt?
+put "stow left"
+
+pause
+waitrt?
+put "stow right"
+
+pause
+waitrt?
+put "take my guide"
+
+pause
+waitrt?
+put "open my guide"
+
+
+loop {
+
+    pause
+    waitrt?
+    put "turn my guide"
+
+    pause
+    waitrt?
+    put "study my guide"
+
+
+}

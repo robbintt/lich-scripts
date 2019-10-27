@@ -1,0 +1,23 @@
+
+pause
+
+loop {
+
+
+    waitrt?
+    put "hide"
+    pause
+
+    waitrt?
+    put "advance"
+    pause
+
+    waitrt?
+    put "slice"
+    pause
+
+    waitrt?
+    put "skin"
+    pause
+
+}

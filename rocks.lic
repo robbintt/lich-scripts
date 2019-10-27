@@ -1,0 +1,28 @@
+
+
+pause
+
+loop {
+
+    pause
+    waitrt?
+    put "gaze my sano crystal"
+
+    waitrt?
+    put "kick pile"
+    waitrt?
+    put "collect rock"
+
+    pause
+    waitrt?
+    put "kick pile"
+    waitrt?
+    put "collect rock"
+
+    pause
+    waitrt?
+    put "kick pile"
+    waitrt?
+    put "collect rock"
+
+}
