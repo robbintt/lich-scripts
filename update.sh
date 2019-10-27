@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp *.lic ../../lich/scripts/
+cp *.lic ../lich/scripts/
