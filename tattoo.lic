@@ -16,6 +16,7 @@ loop {
 
     pause
     waitrt?
+    pause
     put "invoke my cambrinth prism"
 
     waitfor "fully prepared to cast"
