@@ -55,56 +55,79 @@ class BuffWatcher
   def buff_spellstate(buff)
     active_spells = DRSpells.active_spells
     #echo "spell data: #{active_spells}"
-    echo "Buff '#{buff}' has #{active_spells[buff]} roisaen left."
+    #echo "Buff '#{buff}' has #{active_spells[buff]} roisaen left."
     return active_spells[buff]
   end
 
-  def buff_caster(spell, mana)
+  def cast_buff(spell, mana)
     # dead simple, no dependencies
     # if it doesnt work, the nanny tries again later
-    waitrt?
     put "prep #{spell} #{mana}"
     pause 16
-    put "cast"
+    fput "cast", "You gesture.", "You"
     waitrt?
   end
 
   def cambstate(camb, attribs)
-    focus = put "focus #{camb}"
-    # this is hardcoded for the prism...
+    # this doesn't handle cases where skill is not sufficient
+    focus = fput "focus #{camb}", "You focus"
+    waitrt?
     cambstate_string = matchtimeout 5, "the cambrinth #{camb}"
-    amount = /You clearly perceive ([0-9]+) line/.match(cambstate_string)[1]
-    # catch empty
-    unless amount
-      amount = 0
+    lines = /You clearly perceive ([0-9]+) line/.match(cambstate_string)[1]
+    # catch empty camb
+    unless lines
+      lines = 0
     end
+    # set focused
     focused = false
     if /Your link to the/.match(cambstate_string)
       focused = true
     end
 
-    echo "Cambrinth has: #{amount} mana."
-    @worn_cambrinth[camb]['lines'] = amount
+    # this is extra code, just set it above instead
+    echo "Cambrinth has: #{lines} mana."
+    @worn_cambrinth[camb]['lines'] = lines.to_i
     echo "Cambrinth is focused: #{focused}"
-    @worn_cambrinth[camb]['focused'] = focused 
+    @worn_cambrinth[camb]['focused'] = focused
   end
 
-  #def cambprep(camb, capacity, target)
-  #  if amount > target
-  #    echo "Amount in cambrinth #{camb} is over the target, skipping cambrinth."
-  #  if target > amount
-  #    put "charge #{camb} #{target-amount}"
-  #end
+  def prep_camb(camb, target)
+    # maybe just specify one worn camb for now? but it is more fun to specify a whole hash/dict of them
+    # but then i need some overflow priority...
+    # also would be nice to use held camb
+    # e.g. worn true/false before operating on the camb, but then i need a hands check
 
+    # a little safety
+    unless @worn_cambrinth[camb]
+      echo "Cambrinth '#{camb}' not in @worn_cambrinth"
+      return
+    end
+    lines = @worn_cambrinth[camb]['lines']
+    if lines > target
+      #echo "Amount in cambrinth #{camb} is over the target, skipping cambrinth."
+      fput "invoke #{camb} #{target}", "link"
+      waitrt?
+    elsif target > lines
+      fput "charge #{camb} #{target-lines}", "You harness"
+      waitrt?
+      fput "invoke #{camb}", "link" #fixme
+      waitrt?
+    else # exact right amount
+      fput "invoke #{camb}", "link"
+      waitrt? # might not have a roundtime...
+    end
+  end
 end
 
 buffwatcher = BuffWatcher.new
 
 buffwatcher.nervestate
 
+=begin
 buffwatcher.worn_cambrinth.each do |camb, attribs|
   buffwatcher.cambstate(camb, attribs)
 end
+=end
 
 loop {
   # once i figure out how to compare it to something, pass the reset condition as a number - on a per-spell basis
@@ -113,7 +136,9 @@ loop {
     buffstate = buffwatcher.buff_spellstate(buff)
 
     if !buffstate or buffstate < 5  # 5 minutes is hardcoded temporarily
-        buffwatcher.buff_caster(buff, mana)
+        buffwatcher.cambstate('prism', @worn_cambrinth['prism'])
+        buffwatcher.prep_camb('prism', 5) # get these from elsewhere... how to choose which camb?
+        buffwatcher.cast_buff(buff, mana)
     end
 
     pause 1
