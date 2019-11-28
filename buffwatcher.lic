@@ -1,0 +1,99 @@
+=begin
+  Documentation:
+=end
+
+# common, DRC: check if script is running thingy
+# spellmonitor: watch spells
+custom_require.call(%w[drinfomon common spellmonitor])
+
+# original from hunting-buddy.lic
+#custom_require.call(%w[common common-arcana common-items common-travel drinfomon events spellmonitor equipmanager])
+
+class BuffWatcher
+
+  # from common: have only used one method from DRC so far, not sure what DRCA, DRCI, DRCT are...
+  include DRC
+  #include DRCA
+  #include DRCI
+  #include DRCT
+
+  def initialize
+
+    @buffs = {'Shadows' => 20,
+              'Seer\'s Sense' => 20}
+
+    @worn_cambrinth = {'prism':108}
+
+    @active_spells = {}  # init for DRSpells.active_spells
+
+    # what is all this, what can i use
+    #arg_definitions = [[]]
+    #args = parse_args(arg_definitions, true)
+    #@settings = get_settings
+    #@stop_on_low_threshold = @settings.stop_on_low_threshold
+    #data = get_data('hunting')
+    #@escort_zones = data.escort_zones
+  end
+
+  def worn_cambrinth
+    @worn_cambrinth
+  end
+  def buffs 
+    @buffs
+  end
+
+  def nervestate
+    if Wounds.nerves > 0
+      echo "Wounds: #{Wounds.nerves}"
+    else
+      echo "No nerve wounds."
+    end
+  end
+
+  def buff_spellstate(buff)
+    active_spells = DRSpells.active_spells
+    #echo "spell data: #{active_spells}"
+    echo "Buff '#{buff}' has #{active_spells[buff]} roisaen left."
+    return active_spells[buff]
+  end
+
+  def buff_caster(spell, mana)
+    # dead simple, no dependencies
+    # if it doesnt work, the nanny tries again later
+    waitrt?
+    put "prep #{spell} #{mana}"
+    pause 16
+    put "cast"
+    waitrt?
+  end
+
+  def cambstate(camb, capacity)
+    focus = put "focus #{camb}"
+    # this is hardcoded for the prism...
+    amount = matchfind "The cambrinth prism pulses faintly with Lunar energy.  You clearly perceive ? lines worth of spell energy bound within the prism."
+    echo "Cambrinth has: #{amount} mana."
+  end
+
+end
+
+buffwatcher = BuffWatcher.new
+
+buffwatcher.nervestate
+
+buffwatcher.worn_cambrinth.each do |camb, capacity|
+  buffwatcher.cambstate(camb, capacity)
+end
+
+loop {
+  # once i figure out how to compare it to something, pass the reset condition as a number
+  #   - 0 means reset only after spell wears off, 10 means reset when 10 roisaen left on spell, etc
+  buffwatcher.buffs.each do |buff, mana|
+    buffstate = buffwatcher.buff_spellstate(buff)
+
+    if !buffstate or buffstate < 5  # 5 minutes is hardcoded temporarily
+        buffwatcher.buff_caster(buff, mana)
+    end
+
+    pause 1
+  end
+}
