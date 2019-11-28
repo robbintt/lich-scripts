@@ -20,8 +20,12 @@ class BuffWatcher
   def initialize
 
     # need to use full name of spell
-    @buffs = {'Shadows' => 20,
-              'Seer\'s Sense' => 20}
+    @buffs = {'Shadows' => {'min' => 1, 'power' => 25},
+              'Seer\'s Sense' => {'min' => 1, 'power' => 25}}
+
+    # max amount to power spell from harness
+    @max_spell_size = 20
+    @charge_cambrinth = true
 
     # track if each camb is linked
     @worn_cambrinth = {'prism' => {'capacity' => 108, 'focused' => false, 'lines' => 0}}
@@ -40,8 +44,14 @@ class BuffWatcher
   def worn_cambrinth
     @worn_cambrinth
   end
-  def buffs 
+  def buffs
     @buffs
+  end
+  def max_spell_size
+    @max_spell_size
+  end
+  def charge_cambrinth
+    @charge_cambrinth
   end
 
   def nervestate
@@ -78,6 +88,7 @@ class BuffWatcher
     unless lines
       lines = 0
     end
+    echo "lines: #{lines}"
     # set focused
     focused = false
     if /Your link to the/.match(cambstate_string)
@@ -91,11 +102,29 @@ class BuffWatcher
     @worn_cambrinth[camb]['focused'] = focused
   end
 
+  def get_power_from_camb(camb, attribs, min_from_camb, max_from_camb, min_prep, spell_power)
+    echo "attribs: #{attribs}"
+    # determine the max power the cambrinth can provide
+    # return spell_power - min_prep - max_from_camb
+    # set max to camb capacity if necessary
+    if attribs['capacity'] < max_from_camb
+      max_from_camb = attribs['capacity']
+    end
+    # plenty of mana, no need to charge
+    if attribs['lines'] >= max_from_camb
+      return max_from_camb, 0
+    # need to charge the camb, increase spell prep, or underpower the spell
+    elsif attribs['lines'] < max_from_camb
+      return max_from_camb, max_from_camb - attribs['lines']
+    # not reachable
+    else
+      # add logging here to detect if it is reached
+      return 0, 0
+    end
+  end
+
   def prep_camb(camb, target)
-    # maybe just specify one worn camb for now? but it is more fun to specify a whole hash/dict of them
-    # but then i need some overflow priority...
-    # also would be nice to use held camb
-    # e.g. worn true/false before operating on the camb, but then i need a hands check
+    # charge the camb up to target and invoke it
 
     # a little safety
     unless @worn_cambrinth[camb]
@@ -103,18 +132,19 @@ class BuffWatcher
       return
     end
     lines = @worn_cambrinth[camb]['lines']
-    if lines > target
-      #echo "Amount in cambrinth #{camb} is over the target, skipping cambrinth."
+    if lines >= target
       fput "invoke #{camb} #{target}", "link"
-      waitrt?
+      waitrt? # no roundtime if already linked
     elsif target > lines
       fput "charge #{camb} #{target-lines}", "You harness"
       waitrt?
-      fput "invoke #{camb}", "link" #fixme
-      waitrt?
-    else # exact right amount
-      fput "invoke #{camb}", "link"
-      waitrt? # might not have a roundtime...
+      fput "invoke #{camb} #{target}", "link"
+      waitrt? # no roundtime if already linked
+    # not possible to hit this case
+    else
+      # TODO add logging that this happened
+      fput "invoke #{camb} #{target}", "link"
+      waitrt? # no roundtime if already linked
     end
   end
 end
@@ -132,13 +162,80 @@ end
 loop {
   # once i figure out how to compare it to something, pass the reset condition as a number - on a per-spell basis
   #   - 0 means reset only after spell wears off, 10 means reset when 10 roisaen left on spell, etc
-  buffwatcher.buffs.each do |buff, mana|
+  buffwatcher.buffs.each do |buff, attrs|
+    # seek to maximize camb usage and minimize harness usage
+    # but stay within bounds for each
+    # have an option for using only existing camb charge
     buffstate = buffwatcher.buff_spellstate(buff)
+    max_from_harness = buffwatcher.max_spell_size
 
+    # establish bounds for the cambrinth min/max charge calculations
+    min_prep = attrs['min']
+    spell_power = attrs['power']
+    max_prep = spell_power
+    max_from_camb = spell_power - min_prep # does not yet reflect camb capacity
+
+    if spell_power > max_from_harness
+      # min_from_camb is minimum to ensure we hit spell power given max_from_harness
+      min_from_camb = spell_power - max_from_harness
+      # this gets recalculated after calculating max_from_camb
+      max_prep = max_from_harness  # consume this partial value when casting
+    else
+      min_from_camb = 0
+    end
+    # how to choose which camb?
+    camb = 'prism'
+
+    # I have a half-baked idea about keeping my worn camb full with another script
+    # this code first seeks to maximize from camb, then if the camb is undercharged
+    # it seeks to pull more from the prep size until the max prep size
+    # then it either charges the camb or casts undersized spells
     if !buffstate or buffstate < 5  # 5 minutes is hardcoded temporarily
-        buffwatcher.cambstate('prism', @worn_cambrinth['prism'])
-        buffwatcher.prep_camb('prism', 5) # get these from elsewhere... how to choose which camb?
-        buffwatcher.cast_buff(buff, mana)
+      if min_from_camb > 0
+        # does this instance @variable work because its in a function sig in the instance?
+        buffwatcher.cambstate(camb, @worn_cambrinth[camb])
+        # this gets the most possible from camb
+        power_from_camb, amount_undercharged = buffwatcher.get_power_from_camb(camb, buffwatcher.worn_cambrinth[camb], min_from_camb, max_from_camb, min_prep, spell_power)
+        echo "#{power_from_camb}, #{amount_undercharged}"
+
+        # plan prep size based on power_from_camb
+        if amount_undercharged = 0
+          ideal_prep_size = min_prep
+        elsif amount_undercharged > 0
+          # lowest possible prep based on camb charges aka "lines"
+          ideal_prep_size = spell_power - power_from_camb
+        end
+        # cap the prep at max prep
+        if ideal_prep_size <= max_prep
+          prep_size = ideal_prep_size
+        else
+          prep_size = max_prep
+        end
+        #prep_size = (ideal_prep_size <= max_prep) ? ideal_prep_size : max_prep
+        echo "#{prep_size}"
+
+        # take less from camb if we compensated for uncharged camb with bigger prep
+        echo "spellpower: #{spell_power} prep: #{prep_size} camb: #{power_from_camb}"
+        if spell_power - prep_size < power_from_camb
+          revised_max_power_from_camb = spell_power - prep_size
+        else
+          revised_max_power_from_camb = power_from_camb
+        end
+        #revised_max_power_from_camb = (spell_power - prep_size) < power_from_camb ? (spell_power - prep_size) : power_from_camb
+
+        # calculate if there's a gap in the max values here
+        prep_gap = spell_power - power_from_camb - prep_size
+
+        # this option charges the camb up for full spell_power
+        if @charge_cambrinth
+          buffwatcher.prep_camb(camb, revised_max_power_from_camb + prep_gap)
+        else
+          # this avoids charging the camb for final spell_power=spell_power-prep_gap
+          # it will still invoke the cambrinth
+          buffwatcher.prep_camb(camb, revised_max_power_from_camb)
+        end
+      end
+      buffwatcher.cast_buff(buff, prep_size)
     end
 
     pause 1
