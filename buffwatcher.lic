@@ -21,7 +21,7 @@ class BuffWatcher
 
     # need to use full name of spell
     @buffs = {'Shadows' => {'min' => 1, 'power' => 25},
-              'Seer\'s Sense' => {'min' => 1, 'power' => 25}}
+              'Seer\'s Sense' => {'min' => 15, 'power' => 25}}
 
     # max amount to power spell from harness
     @max_spell_size = 20
@@ -88,7 +88,6 @@ class BuffWatcher
     unless lines
       lines = 0
     end
-    echo "lines: #{lines}"
     # set focused
     focused = false
     if /Your link to the/.match(cambstate_string)
@@ -103,7 +102,6 @@ class BuffWatcher
   end
 
   def get_power_from_camb(camb, attribs, min_from_camb, max_from_camb, min_prep, spell_power)
-    echo "attribs: #{attribs}"
     # determine the max power the cambrinth can provide
     # return spell_power - min_prep - max_from_camb
     # set max to camb capacity if necessary
@@ -196,26 +194,19 @@ loop {
         buffwatcher.cambstate(camb, @worn_cambrinth[camb])
         # this gets the most possible from camb
         power_from_camb, amount_undercharged = buffwatcher.get_power_from_camb(camb, buffwatcher.worn_cambrinth[camb], min_from_camb, max_from_camb, min_prep, spell_power)
-        echo "#{power_from_camb}, #{amount_undercharged}"
 
-        # plan prep size based on power_from_camb
-        if amount_undercharged = 0
-          ideal_prep_size = min_prep
-        elsif amount_undercharged > 0
-          # lowest possible prep based on camb charges aka "lines"
-          ideal_prep_size = spell_power - power_from_camb
-        end
+        # make up for the undercharged cambrinth if possible
+        ideal_prep_size = min_prep + amount_undercharged
         # cap the prep at max prep
         if ideal_prep_size <= max_prep
           prep_size = ideal_prep_size
         else
           prep_size = max_prep
         end
+        # this was in the path of error logging, add back later
         #prep_size = (ideal_prep_size <= max_prep) ? ideal_prep_size : max_prep
-        echo "#{prep_size}"
 
         # take less from camb if we compensated for uncharged camb with bigger prep
-        echo "spellpower: #{spell_power} prep: #{prep_size} camb: #{power_from_camb}"
         if spell_power - prep_size < power_from_camb
           revised_max_power_from_camb = spell_power - prep_size
         else
