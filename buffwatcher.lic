@@ -19,10 +19,12 @@ class BuffWatcher
 
   def initialize
 
+    # need to use full name of spell
     @buffs = {'Shadows' => 20,
               'Seer\'s Sense' => 20}
 
-    @worn_cambrinth = {'prism':108}
+    # track if each camb is linked
+    @worn_cambrinth = {'prism' => {'capacity' => 108, 'focused' => false, 'lines' => 0}}
 
     @active_spells = {}  # init for DRSpells.active_spells
 
@@ -67,12 +69,32 @@ class BuffWatcher
     waitrt?
   end
 
-  def cambstate(camb, capacity)
+  def cambstate(camb, attribs)
     focus = put "focus #{camb}"
     # this is hardcoded for the prism...
-    amount = matchfind "The cambrinth prism pulses faintly with Lunar energy.  You clearly perceive ? lines worth of spell energy bound within the prism."
+    cambstate_string = matchtimeout 5, "the cambrinth #{camb}"
+    amount = /You clearly perceive ([0-9]+) line/.match(cambstate_string)[1]
+    # catch empty
+    unless amount
+      amount = 0
+    end
+    focused = false
+    if /Your link to the/.match(cambstate_string)
+      focused = true
+    end
+
     echo "Cambrinth has: #{amount} mana."
+    @worn_cambrinth[camb]['lines'] = amount
+    echo "Cambrinth is focused: #{focused}"
+    @worn_cambrinth[camb]['focused'] = focused 
   end
+
+  #def cambprep(camb, capacity, target)
+  #  if amount > target
+  #    echo "Amount in cambrinth #{camb} is over the target, skipping cambrinth."
+  #  if target > amount
+  #    put "charge #{camb} #{target-amount}"
+  #end
 
 end
 
@@ -80,12 +102,12 @@ buffwatcher = BuffWatcher.new
 
 buffwatcher.nervestate
 
-buffwatcher.worn_cambrinth.each do |camb, capacity|
-  buffwatcher.cambstate(camb, capacity)
+buffwatcher.worn_cambrinth.each do |camb, attribs|
+  buffwatcher.cambstate(camb, attribs)
 end
 
 loop {
-  # once i figure out how to compare it to something, pass the reset condition as a number
+  # once i figure out how to compare it to something, pass the reset condition as a number - on a per-spell basis
   #   - 0 means reset only after spell wears off, 10 means reset when 10 roisaen left on spell, etc
   buffwatcher.buffs.each do |buff, mana|
     buffstate = buffwatcher.buff_spellstate(buff)
