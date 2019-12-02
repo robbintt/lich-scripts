@@ -14,12 +14,17 @@
     - put better guardrails for sleep/pause if not enough mana
     - support held camb, how to stow though, probably just support stow
       - if stow fails quit with echo ERROR: Your cambrinth failed to stow.
+    - need to sleep focuses on rope bridge: 
+      - You find it hard to concentrate on anything but getting across the bridge.
+    - need to sleep in rooms that don't allow focus, like the bank and vault
+      - Something in the area is interfering with your magical senses.
+
 =end
 
 class CambWatcher
 
   def initialize
-    @max_single_camb_charge = 19
+    @max_single_camb_charge = 19 # 3 seconds
     @charge_cambrinth = true
     @sleep_between_checks = 180
 
@@ -46,8 +51,8 @@ class CambWatcher
   def cambstate(camb, attribs)
 
     # get raw info
-    focus = fput "focus #{camb}", "You focus"
     waitrt?
+    focus = fput "focus #{camb}", "You focus"
     cambstate_string = matchtimeout 5, "the cambrinth #{camb}"
 
     # set mana
@@ -83,6 +88,7 @@ class CambWatcher
     if target > lines
       # never charge more than max_single_camb_charge
       if (target - lines) > @max_single_camb_charge
+        waitrt?
         fput "charge #{camb} #{@max_single_camb_charge}", "You harness"
         # update the cambrinth
         @worn_cambrinth[camb]['lines'] += max_single_camb_charge
@@ -90,8 +96,8 @@ class CambWatcher
         charge_camb(camb, target)
       # top it off
       else
-        fput "charge #{camb} #{target - lines}", "You harness"
         waitrt?
+        fput "charge #{camb} #{target - lines}", "You harness"
         @worn_cambrinth[camb]['lines'] += (target - lines)
       end
     end

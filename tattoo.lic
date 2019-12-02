@@ -12,12 +12,12 @@ loop {
 
     pause
     waitrt?
-    put "charge my cambrinth prism 5"
+    put "charge my cambrinth prism 6"
 
     pause
     waitrt?
     pause
-    put "invoke my cambrinth prism 5"
+    put "invoke my cambrinth prism 6"
 
     waitfor "fully prepared to cast"
     pause 5
