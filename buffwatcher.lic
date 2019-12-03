@@ -31,7 +31,7 @@ class BuffWatcher
 
     # need to use full name of spell
     @buffs = {'Shadows' => {'min' => 1, 'power' => 100},
-              'Seer\'s Sense' => {'min' => 15, 'power' => 62},
+              'Seer\'s Sense' => {'min' => 15, 'power' => 80},
               'Clear Vision' => {'min' => 1, 'power' => 100}}
 
     # max amount to power spell from harness
@@ -93,7 +93,7 @@ class BuffWatcher
     # if it doesnt work, the nanny tries again later
     waitrt?
     fput "prep #{spell} #{mana}"
-    pause 16
+    pause 20
     waitrt?
     fput "cast", "You gesture.", "You"
   end
