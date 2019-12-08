@@ -1,0 +1,22 @@
+
+pause
+
+waitrt?
+put "feint"
+pause
+
+waitrt?
+put "feint"
+pause
+
+waitrt?
+put "feint"
+pause
+
+waitrt?
+put "skin"
+pause
+
+waitrt?
+put "loot"
+pause

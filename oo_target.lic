@@ -1,0 +1,18 @@
+
+pause
+waitrt?
+put "prep pd 18"
+
+pause
+put "target"
+pause 9
+put "cast"
+
+pause
+waitrt?
+put "skin"
+
+pause
+waitrt?
+put "loot"
+

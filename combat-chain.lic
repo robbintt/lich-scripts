@@ -1,0 +1,27 @@
+=begin
+  Documentation:
+
+  Future:
+    -
+=end
+
+custom_require.call(%w[common])
+include DRC  # wait_for_script_to_complete
+
+loop {
+
+  wait_for_script_to_complete('oo_hunter')
+  wait_for_script_to_complete('oo_debil')
+  wait_for_script_to_complete('oo_debil')
+  wait_for_script_to_complete('oo_brawl')
+  wait_for_script_to_complete('oo_brawl')
+  wait_for_script_to_complete('oo_target')
+  wait_for_script_to_complete('oo_target')
+  wait_for_script_to_complete('oo_target')
+  wait_for_script_to_complete('oo_afeint')
+  wait_for_script_to_complete('oo_afeint')
+  wait_for_script_to_complete('oo_afeint')
+  wait_for_script_to_complete('oo_afeint')
+  #wait_for_script_to_complete('oo_feint')
+
+}
