@@ -1,0 +1,15 @@
+
+pause
+
+waitrt?
+put "prep mb 16"
+
+pause 8
+
+waitrt?
+put "cast"
+
+pause
+
+waitrt?
+put "face next"

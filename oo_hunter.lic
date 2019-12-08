@@ -1,0 +1,30 @@
+
+pause 2
+
+waitrt?
+put "gaze my sano crystal"
+
+pause
+
+waitrt?
+put "hunt"
+
+pause 2
+
+waitrt?
+put "analyze"
+
+pause 2
+
+waitrt?
+put "app gryphon"
+
+pause 2
+
+waitrt?
+put "app other gryphon"
+
+pause 2
+
+waitrt?
+put "perc moons"

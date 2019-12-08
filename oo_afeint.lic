@@ -1,0 +1,23 @@
+
+pause
+
+waitrt?
+put "hide"
+pause
+
+waitrt?
+put "advance"
+pause
+
+waitrt?
+put "feint"
+pause
+
+waitrt?
+put "skin"
+pause
+
+waitrt?
+put "loot"
+pause
+
