@@ -1,7 +1,7 @@
 
 loop {
 
-    pause 30
+    pause 90
     put "ex"
 
 }
