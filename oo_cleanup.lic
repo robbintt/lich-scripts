@@ -2,9 +2,8 @@
 pause
 
 waitrt?
-put "feint"
+put "skin"
 pause
 
 waitrt?
-put "feint"
-pause
+put "loot"
