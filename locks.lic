@@ -18,6 +18,8 @@ class LockTrainer
 
     @locks_exp_threshold = 34
     @skillname = 'Locksmithing'
+    @pick_message = ''
+    @end_message_list = ["The lock feels warm, as if worked too often recently, so you stop your attempt to pick it."]
 
     # what is all this, what can i use
     #arg_definitions = [[]]
@@ -26,6 +28,12 @@ class LockTrainer
     #@stop_on_low_threshold = @settings.stop_on_low_threshold
     #data = get_data('hunting')
     #@escort_zones = data.escort_zones
+  end
+  def pick_message 
+    @pick_message
+  end
+  def end_message_list 
+    @end_message_list
   end
   def training_items 
     @training_items
@@ -42,7 +50,9 @@ class LockTrainer
     waitrt?
     fput "lock my #{item}", "You", "already locked"
     waitrt?
-    fput "pick my #{item}", "You", "isn't locked"
+    # need to append the @end_message_list here to allow custom end_message
+    @pick_message = fput "pick my #{item}", "The lock feels warm, as if worked too often recently, so you stop your attempt to pick it.", "You", "isn't locked"
+    echo "#{@pick_message}"
   end
 end
 
@@ -57,7 +67,7 @@ locktrainer.training_items.each do |trainer, attribs|
   # put this in a loop
   waitrt?
   fput "get my #{trainer}", "You get", "You"
-  while DRSkill.getxp(locktrainer.skillname) < locktrainer.locks_exp_threshold
+  while DRSkill.getxp(locktrainer.skillname) < locktrainer.locks_exp_threshold and not locktrainer.end_message_list.include?(locktrainer.pick_message)
     locktrainer.pick(trainer, attribs)
   end
   waitrt?
