@@ -14,6 +14,7 @@ loop {
   put "inv held"
 
   wait_for_script_to_complete('oo_feint')
+  wait_for_script_to_complete('oo_cleanup')
   wait_for_script_to_complete('oo_hunter')
   wait_for_script_to_complete('oo_debil')
   wait_for_script_to_complete('oo_debil')
@@ -22,9 +23,11 @@ loop {
   wait_for_script_to_complete('oo_target')
   wait_for_script_to_complete('oo_target')
   wait_for_script_to_complete('oo_target')
+  wait_for_script_to_complete('oo_cleanup')
   wait_for_script_to_complete('oo_afeint')
   wait_for_script_to_complete('oo_afeint')
   wait_for_script_to_complete('oo_afeint')
   wait_for_script_to_complete('oo_afeint')
+  wait_for_script_to_complete('oo_cleanup')
 
 }
