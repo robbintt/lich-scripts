@@ -13,7 +13,19 @@ loop {
     pause
 
     waitrt?
+    put "circle"
+    pause
+
+    waitrt?
+    put "elbow"
+    pause
+
+    waitrt?
     put "skin"
+    pause
+
+    waitrt?
+    put "loot"
     pause
 
 }

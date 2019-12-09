@@ -27,4 +27,14 @@ put "app other gryphon"
 pause 2
 
 waitrt?
+put "recall gryphon"
+
+pause 2
+
+waitrt?
+put "recall other gryphon"
+
+pause 2
+
+waitrt?
 put "perc moons"
