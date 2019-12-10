@@ -28,7 +28,7 @@ class ClimbTrainer
   def climb(item)
     waitrt?
     # need 'didn't work' message, need 'wait a bit' message
-    fput "cli prac #{item}", "You begin to practice your climbing skills.", "You should stop practicing your Athletics skill before you do that.", "You"
+    fput "cli prac #{item}", "You begin to practice your climbing skills.", "You should stop practicing your Athletics skill before you do that."
     # multi waitfor? want to also notice if it's cancelled and restart
     matchtimeout 150, *end_message_list
     #matchtimeout 60, "string to watch for", "another", "endlessly"
