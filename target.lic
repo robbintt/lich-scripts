@@ -3,11 +3,9 @@ loop {
 
     pause
     waitrt?
-    put "prep pd 18"
+    put "target pd 18"
 
-    pause
-    put "target"
-    pause 9
+    pause 10
     put "cast"
 
     pause

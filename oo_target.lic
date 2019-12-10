@@ -1,10 +1,15 @@
 
 pause
 waitrt?
-put "prep pd 18"
+put "target pd 18"
 
 pause
-put "target"
-pause 9
+waitrt?
+put circle # 4 sec
+
+pause # 1 sec
+waitrt?
+put circle # 4 sec
+
 put "cast"
 
