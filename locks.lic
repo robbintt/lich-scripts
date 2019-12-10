@@ -52,7 +52,6 @@ class LockTrainer
     waitrt?
     # need to append the @end_message_list here to allow custom end_message
     @pick_message = fput "pick my #{item}", "The lock feels warm, as if worked too often recently, so you stop your attempt to pick it.", "You", "isn't locked"
-    echo "#{@pick_message}"
   end
 end
 
