@@ -1,0 +1,21 @@
+=begin
+  Documentation:
+
+  Future:
+    -
+=end
+
+custom_require.call(%w[common])
+include DRC  # wait_for_script_to_complete
+
+loop {
+
+  waitrt?
+  put "inv held"
+
+  wait_for_script_to_complete('climb')
+  wait_for_script_to_complete('locks')
+  # IMPORTANT: before enable, fix tattoo to only run in non-justice using `justice` command
+  #wait_for_script_to_complete('tattoo')
+
+}

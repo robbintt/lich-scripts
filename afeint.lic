@@ -13,7 +13,7 @@ loop {
     pause
 
     waitrt?
-    put "slice"
+    put "feint"
     pause
 
     waitrt?
