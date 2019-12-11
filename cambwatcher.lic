@@ -9,6 +9,7 @@
     - Highest mana per second of RT are: 9, 19, 29, 39...
 
   Future:
+    - needs to deal with out of mana...
     - can i directly check my mana using drinfomon or something
       - maybe set min mana % to charge the camb
     - put better guardrails for sleep/pause if not enough mana
@@ -73,8 +74,7 @@ class CambWatcher
   end
 
   def charge_camb(camb, target)
-    # charge the camb up to target and invoke it
-    # needs to deal with out of mana...
+    # charge the camb up to target
 
     # a little safety
     unless @worn_cambrinth[camb]
