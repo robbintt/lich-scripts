@@ -1,0 +1,35 @@
+pause
+waitrt?
+put "prep mb 18"
+
+waitrt?
+put "circle"
+pause
+
+waitrt?
+put "elbow"
+pause
+
+waitrt?
+put "skin"
+pause
+
+waitrt?
+put "loot"
+pause
+
+waitrt?
+put "analyze"
+pause
+
+waitrt?
+put "app gryphon"
+pause
+
+waitrt?
+put "cast"
+
+waitrt?
+put "face next"
+pause
+
