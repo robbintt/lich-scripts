@@ -1,10 +1,9 @@
 
 pause
-
 waitrt?
 put "circle"
-pause
 
+pause
 waitrt?
 put "elbow"
 
