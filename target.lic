@@ -5,15 +5,31 @@ loop {
     waitrt?
     put "target pd 18"
 
-    pause 10
+    pause # 1 sec
+    waitrt?
+    put "circle" # 4 sec
+
+    pause # 1 sec
+    waitrt?
+    put "elbow" # 2 sec
+
+    pause # 1 sec
+    waitrt?
+    put "elbow" # 2 sec
+
+    pause # 1 sec
+    waitrt?
     put "cast"
 
     pause
     waitrt?
     put "skin"
 
-    pause
     waitrt?
     put "loot"
+
+    pause
+    waitrt?
+    put "advance"
 
 }

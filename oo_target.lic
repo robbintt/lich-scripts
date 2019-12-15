@@ -9,7 +9,11 @@ put "circle" # 4 sec
 
 pause # 1 sec
 waitrt?
-put "circle" # 4 sec
+put "elbow" # 2 sec
+
+pause # 1 sec
+waitrt?
+put "elbow" # 2 sec
 
 pause # 1 sec
 waitrt?
