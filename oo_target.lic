@@ -3,7 +3,7 @@ pause
 waitrt?
 put "target pd 18"
 
-pause
+pause # 1 sec
 waitrt?
 put "circle" # 4 sec
 
@@ -11,5 +11,7 @@ pause # 1 sec
 waitrt?
 put "circle" # 4 sec
 
+pause # 1 sec
+waitrt?
 put "cast"
 
