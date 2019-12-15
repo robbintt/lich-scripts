@@ -1,4 +1,5 @@
 
+# need to thread an RT thing into this script
 loop {
 
     pause
