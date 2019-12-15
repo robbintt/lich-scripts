@@ -70,5 +70,5 @@ locktrainer.training_items.each do |trainer, attribs|
     locktrainer.pick(trainer, attribs)
   end
   waitrt?
-  fput "stow my #{trainer}", "You put", "You"
+  fput "stow my #{trainer}", "You put"
 end

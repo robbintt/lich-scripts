@@ -1,0 +1,8 @@
+
+loop {
+
+    pause 3
+    waitrt?
+    put "retreat"
+
+}

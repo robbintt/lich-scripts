@@ -1,0 +1,17 @@
+=begin
+  Documentation:
+
+=end
+
+custom_require.call(%w[common])
+include DRC  # wait_for_script_to_complete
+
+
+# [0] is the full line, each next index is a word
+# store a hash of inputs and 
+roomnumbers
+echo("Going to: #{variable}")
+
+if variable[0] == 'bin'
+  wait_for_script_to_complete('go2', ['3353'])
+end
