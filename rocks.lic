@@ -7,7 +7,7 @@ class OutdoorsmanshipTrainer
   def initialize
     @training_items = ['rock']
 
-    @outdoorsmanship_exp_threshold = 7
+    @outdoorsmanship_exp_threshold = 34
     @skillname = 'Outdoorsmanship'
     @end_message_list = ["You finish practicing your outdoorsmanship skill and take a well-earned break."]
 
