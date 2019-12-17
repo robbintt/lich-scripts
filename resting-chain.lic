@@ -15,6 +15,7 @@ loop {
 
   wait_for_script_to_complete('climb')
   wait_for_script_to_complete('locks')
+  wait_for_script_to_complete('rocks')
   # IMPORTANT: before enable, fix tattoo to only run in non-justice using `justice` command
   #wait_for_script_to_complete('tattoo')
 

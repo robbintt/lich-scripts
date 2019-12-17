@@ -30,7 +30,8 @@ class OutdoorsmanshipTrainer
     fput "kick pile", "You take a step back and run up to the pile of rocks.", "I could not find what you were referring to."
     pause
     waitrt?
-    put "collect rock", "You manage to collect a pile of rocks.", "You wander around and poke your fingers"
+    # probably want to handle a miss somehow, like a return code
+    fput "collect rock", "You manage to collect a pile of rocks.", "You wander around and poke your fingers"
   end
 end
 
