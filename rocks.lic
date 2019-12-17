@@ -1,28 +1,43 @@
+# common contains DRC?
+custom_require.call(%w[drinfomon common])
 
+class OutdoorsmanshipTrainer
+  # is this needed to get exp or just drinfomon/common?
+  include DRC
+  def initialize
+    @training_items = ['rock']
 
-pause
+    @outdoorsmanship_exp_threshold = 7
+    @skillname = 'Outdoorsmanship'
+    @end_message_list = ["You finish practicing your outdoorsmanship skill and take a well-earned break."]
 
-loop {
-
+  end
+  def end_message_list
+    @end_message_list
+  end
+  def training_items
+    @training_items
+  end
+  def skillname
+    @skillname
+  end
+  def outdoorsmanship_exp_threshold
+    @outdoorsmanship_exp_threshold
+  end
+  def collect(item)
     pause
     waitrt?
-    put "gaze my sano crystal"
-
-    waitrt?
-    put "kick pile"
-    waitrt?
-    put "collect rock"
-
+    fput "kick pile", "You take a step back and run up to the pile of rocks.", "I could not find what you were referring to."
     pause
     waitrt?
-    put "kick pile"
-    waitrt?
-    put "collect rock"
+    put "collect rock", "You manage to collect a pile of rocks.", "You wander around and poke your fingers"
+  end
+end
 
-    pause
-    waitrt?
-    put "kick pile"
-    waitrt?
-    put "collect rock"
+outdoorstrainer = OutdoorsmanshipTrainer.new
 
-}
+outdoorstrainer.training_items.each do |item|
+  while DRSkill.getxp(outdoorstrainer.skillname) < outdoorstrainer.outdoorsmanship_exp_threshold
+    outdoorstrainer.collect(item)
+  end
+end
