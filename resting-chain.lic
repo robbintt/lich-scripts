@@ -17,5 +17,6 @@ loop {
   wait_for_script_to_complete('locks')
   wait_for_script_to_complete('rocks')
   wait_for_script_to_complete('tattoo')
+  wait_for_script_to_complete('sym')
 
 }

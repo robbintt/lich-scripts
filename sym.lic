@@ -1,7 +1,16 @@
 
-# need to thread an RT thing into this script
-loop {
+custom_require.call(%w[drinfomon common spellmonitor])
 
+class MagicTrainer
+  # not yet used
+  attr_reader :skillnames
+
+  def initialize
+    # not yet used
+    @skillnames = ["Magic", "Augmentation", "Utility"]
+  end
+
+  def utilmagic
     pause
     waitrt?
     put "prep symbiosis"
@@ -10,8 +19,9 @@ loop {
     waitfor "fully prepared to cast"
     pause 5
     put "cast"
+  end
 
-
+  def augmagic
     pause
     waitrt?
     put "prep symbiosis"
@@ -20,5 +30,19 @@ loop {
     waitfor "fully prepared to cast"
     pause 5
     put "cast"
+  end
+end
 
-}
+magictrainer = MagicTrainer.new
+
+# need to thread an RT thing into this script
+while DRSkill.getxp('Utility') < 34 or DRSkill.getxp('Augmentation') < 34 or DRSkill.getxp('Lunar Magic') < 34
+  if DRSkill.getxp('Utility') < 34
+    magictrainer.utilmagic
+  end
+  # temp catchall for primary magic
+  if DRSkill.getxp('Augmentation') < 34 or DRSkill.getxp('Lunar Magic') < 34
+    magictrainer.augmagic
+  end
+end
+
