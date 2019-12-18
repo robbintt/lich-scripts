@@ -9,9 +9,13 @@ class TattooTrainer
   #include DRCA
   #include DRCI
   #include DRCT
+  attr_accessor :justicearea
   def initialize
     @camb = "cambrinth prism"
     @camb_charge = 6
+
+    @justice_string = "After assessing the area, you think local law enforcement keeps an eye on what's going on here."
+    @justicearea = ""
 
     # what is all this, what can i use
     #arg_definitions = [[]]
@@ -23,6 +27,9 @@ class TattooTrainer
   end
   def camb
     @camb
+  end
+  def justice_string
+    @justice_string
   end
   def camb_charge
     @camb_charge
@@ -38,15 +45,37 @@ class TattooTrainer
     fput "charge my #{camb} #{camb_charge}", "You harness"
     waitrt?
     fput "invoke my #{camb} #{camb_charge}", "link", "null"
-    pause 16
+    pause 16 # finish spell prep
+
+
+    if justice
+      pause
+      waitrt?
+      fput "cast", "You gesture.", "You"
+    else
+      # note: check on the containing loop to actually abort - is there a lich exit script command?
+      echo "You are in a justice area!! Aborting."
+      pause
+      waitrt?
+      put "release"
+    end
+
+  end
+  def justice
+    pause
     waitrt?
-    fput "cast", "You gesture.", "You"
+    @justicearea = fput "justice", justice_string, "You", "you"
+    if !@justicearea.include?(@justice_string)
+      return true
+    else
+      return false
+    end
   end
 end
 
 tattootrainer = TattooTrainer.new
 
 # there was an abstraction for going over all the named skills in hunting-buddy
-while DRSkill.getxp('Warding') < 34 or DRSkill.getxp('Sorcery') < 34
+while tattootrainer.justice and (DRSkill.getxp('Warding') < 34 or DRSkill.getxp('Sorcery') < 34)
   tattootrainer.cast
 end
