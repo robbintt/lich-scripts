@@ -28,6 +28,7 @@ class OutdoorsmanshipTrainer
     pause
     waitrt?
     fput "kick pile", "You take a step back and run up to the pile of rocks.", "I could not find what you were referring to."
+    fput "kick pile", "You take a step back and run up to the pile of rocks.", "I could not find what you were referring to."
     pause
     waitrt?
     # probably want to handle a miss somehow, like a return code
