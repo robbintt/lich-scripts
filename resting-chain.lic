@@ -8,16 +8,32 @@
 custom_require.call(%w[common])
 include DRC  # wait_for_script_to_complete
 
-loop {
+def percmoons
 
+  pause
   waitrt?
   put "inv held"
+  pause
+  waitrt?
+  put "perc moons"
 
+end
+
+loop {
+
+
+  percmoons
   wait_for_script_to_complete('tattoo')
+  percmoons
   wait_for_script_to_complete('locks')
+  percmoons
   wait_for_script_to_complete('rocks')
+  percmoons
   wait_for_script_to_complete('climb')
+  percmoons
   wait_for_script_to_complete('study')
+  percmoons
   wait_for_script_to_complete('sym')
+  percmoons
 
 }

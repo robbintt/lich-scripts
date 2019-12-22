@@ -64,11 +64,13 @@ locktrainer = LockTrainer.new
 locktrainer.training_items.each do |trainer, attribs|
   # later add a condition where this one is used up and move on to the next...
   # put this in a loop
+  pause
   waitrt?
   fput "get my #{trainer}", "You get", "You"
   while DRSkill.getxp(locktrainer.skillname) < locktrainer.locks_exp_threshold and not locktrainer.end_message_list.include?(locktrainer.pick_message)
     locktrainer.pick(trainer, attribs)
   end
+  pause
   waitrt?
   fput "stow my #{trainer}", "You put"
 end
