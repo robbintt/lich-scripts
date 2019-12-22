@@ -19,3 +19,15 @@ if variable[0] == 'gryphons'
   wait_for_script_to_complete('go2', ['8626'])
 end
 
+
+## Shard
+
+# [Dragon's Spine, Behind the Waterfall]
+if variable[0] == 'waterfall'
+  wait_for_script_to_complete('go2', ['19471'])
+end
+
+# blade spiders: [Undergondola, Twisting Grotto]
+if variable[0] == 'blades'
+  wait_for_script_to_complete('go2', ['11507'])
+end
