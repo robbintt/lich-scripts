@@ -1,24 +1,26 @@
 
+custom_require.call(%w[drinfomon common spellmonitor])
 
-pause
-waitrt?
-put "stow left"
+class FirstAidTrainer
+  # not yet used
+  attr_reader :skillnames
 
-pause
-waitrt?
-put "stow right"
+  def initialize
+    # not yet used
+    @skillnames = ["Magic", "Augmentation", "Utility"]
+  end
 
-pause
-waitrt?
-put "take my guide"
+  def stow
+    pause
+    waitrt?
+    put "stow left"
 
-pause
-waitrt?
-put "open my guide"
+    pause
+    waitrt?
+    put "stow right"
+  end
 
-
-loop {
-
+  def studyguide
     pause
     waitrt?
     put "turn my guide"
@@ -27,5 +29,24 @@ loop {
     waitrt?
     put "study my guide"
 
+  end
 
-}
+  def getguide
+    pause
+    waitrt?
+    put "take my guide"
+
+    pause
+    waitrt?
+    put "open my guide"
+  end
+end
+
+firstaidtrainer = FirstAidTrainer.new
+
+firstaidtrainer.stow
+firstaidtrainer.getguide
+while DRSkill.getxp('First Aid') < 34
+  firstaidtrainer.studyguide
+end
+firstaidtrainer.stow

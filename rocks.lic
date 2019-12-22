@@ -32,7 +32,7 @@ class OutdoorsmanshipTrainer
     pause
     waitrt?
     # probably want to handle a miss somehow, like a return code
-    fput "collect rock", "You manage to collect a pile of rocks.", "You wander around and poke your fingers"
+    fput "collect rock", "You move backwards slightly", "You manage to collect a pile of rocks.", "You wander around and poke your fingers", "Mindlessly you begin to forage the area before you.", "You move slightly to the left, hoping to find a better foraging spot."
   end
 end
 

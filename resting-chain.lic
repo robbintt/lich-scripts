@@ -13,10 +13,11 @@ loop {
   waitrt?
   put "inv held"
 
+  wait_for_script_to_complete('tattoo')
   wait_for_script_to_complete('locks')
   wait_for_script_to_complete('rocks')
-  wait_for_script_to_complete('tattoo')
   wait_for_script_to_complete('climb')
+  wait_for_script_to_complete('study')
   wait_for_script_to_complete('sym')
 
 }
