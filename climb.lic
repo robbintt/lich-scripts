@@ -46,6 +46,7 @@ climbtrainer = ClimbTrainer.new
 
 climbtrainer.training_items.each do |item|
   # fire this and don't worry if it works or not
+  pause
   waitrt?
   put "appraise focus #{item}"
   while DRSkill.getxp(climbtrainer.skillname) < climbtrainer.climb_exp_threshold and climbtrainer.target_exists

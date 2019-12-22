@@ -42,7 +42,8 @@ class FirstAidTrainer
 
     pause
     waitrt?
-    put "turn my guide to boo"
+    #put "turn my guide to boo"
+    put "turn my guide to peccary"
   end
 end
 
@@ -51,7 +52,7 @@ firstaidtrainer = FirstAidTrainer.new
 firstaidtrainer.stow
 firstaidtrainer.getguide
 # book doesn't lock it at the moment, try unlocking more
-while DRSkill.getxp('First Aid') < 24
+while DRSkill.getxp('First Aid') < 34
   firstaidtrainer.studyguide
 end
 firstaidtrainer.stow
