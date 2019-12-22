@@ -39,6 +39,10 @@ class FirstAidTrainer
     pause
     waitrt?
     put "open my guide"
+
+    pause
+    waitrt?
+    put "turn my guide to boo"
   end
 end
 
