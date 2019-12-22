@@ -20,4 +20,8 @@ loop {
     put "skin"
     pause
 
+    waitrt?
+    put "loot goods"
+    pause
+
 }

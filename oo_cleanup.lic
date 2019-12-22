@@ -6,4 +6,4 @@ put "skin"
 pause
 
 waitrt?
-put "loot"
+put "loot goods"
