@@ -50,7 +50,8 @@ firstaidtrainer = FirstAidTrainer.new
 
 firstaidtrainer.stow
 firstaidtrainer.getguide
-while DRSkill.getxp('First Aid') < 34
+# book doesn't lock it at the moment, try unlocking more
+while DRSkill.getxp('First Aid') < 24
   firstaidtrainer.studyguide
 end
 firstaidtrainer.stow
