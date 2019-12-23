@@ -7,7 +7,7 @@ class ClimbTrainer
   # is this needed to get exp or just drinfomon/common?
   include DRC
   def initialize
-    @training_items = ['pine tree']
+    @training_items = ['pine tree', 'wall']
     @target_exists = true
 
     @climb_exp_threshold = 34

@@ -1,10 +1,21 @@
 
 pause
-
 waitrt?
 put "prep mb 16"
 
-pause 8
+#pause 8
+
+pause
+waitrt?
+put "circle"
+
+pause
+waitrt?
+put "elbow"
+
+pause
+waitrt?
+put "analyze"
 
 waitrt?
 put "cast"

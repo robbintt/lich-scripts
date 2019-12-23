@@ -76,6 +76,6 @@ end
 tattootrainer = TattooTrainer.new
 
 # there was an abstraction for going over all the named skills in hunting-buddy
-while tattootrainer.justice and (DRSkill.getxp('Warding') < 34 or DRSkill.getxp('Sorcery') < 34)
+while tattootrainer.justice and (DRSkill.getxp('Warding') < 34 and DRSkill.getxp('Sorcery') < 34)
   tattootrainer.cast
 end

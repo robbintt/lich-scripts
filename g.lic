@@ -22,6 +22,16 @@ end
 
 ## Shard
 
+# 
+if variable[0] == 'shardwestgate'
+  wait_for_script_to_complete('go2', ['6452'])
+end
+
+# [The Western Road, Big Meadow]
+if variable[0] == 'shardgryphons'
+  wait_for_script_to_complete('go2', ['6244'])
+end
+
 # [Dragon's Spine, Behind the Waterfall]
 if variable[0] == 'waterfall'
   wait_for_script_to_complete('go2', ['19471'])
