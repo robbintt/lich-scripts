@@ -19,6 +19,13 @@ if variable[0] == 'gryphons'
   wait_for_script_to_complete('go2', ['8626'])
 end
 
+if variable[0] == 'repair'
+  wait_for_script_to_complete('go2', ['12209'])
+end
+
+if variable[0] == 'srela'
+  wait_for_script_to_complete('go2', ['10079'])
+end
 
 ## Shard
 
