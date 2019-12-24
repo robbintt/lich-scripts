@@ -14,8 +14,9 @@ class MagicTrainer
     pause
     waitrt?
     put "prep symbiosis"
+    pause
     waitrt?
-    put "prep pg 23"
+    put "prep pg 26"
     waitfor "fully prepared to cast"
     pause 5
     put "cast"
@@ -25,8 +26,9 @@ class MagicTrainer
     pause
     waitrt?
     put "prep symbiosis"
+    pause
     waitrt?
-    put "prep aus 23"
+    put "prep aus 26"
     waitfor "fully prepared to cast"
     pause 5
     put "cast"
