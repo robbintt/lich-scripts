@@ -2,34 +2,35 @@ pause
 waitrt?
 put "prep mb 18"
 
+pause
 waitrt?
 put "circle"
-pause
 
+pause
 waitrt?
 put "elbow"
-pause
 
+pause
 waitrt?
 put "skin"
-pause
 
+pause
 waitrt?
 put "loot"
-pause
 
+pause
 waitrt?
 put "analyze"
-pause
 
+pause
 waitrt?
 put "app gryphon"
-pause
 
+pause
 waitrt?
 put "cast"
 
+pause
 waitrt?
 put "face next"
-pause
 

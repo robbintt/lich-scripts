@@ -26,7 +26,7 @@ loop {
     put "skin"
 
     waitrt?
-    put "loot"
+    put "loot goods"
 
     pause
     waitrt?

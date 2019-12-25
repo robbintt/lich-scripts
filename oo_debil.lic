@@ -17,10 +17,10 @@ pause
 waitrt?
 put "analyze"
 
+pause
 waitrt?
 put "cast"
 
 pause
-
 waitrt?
 put "face next"
