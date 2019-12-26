@@ -3,19 +3,24 @@ loop {
 
     pause
     waitrt?
-    put "target pd 18"
+    fput "target pd 18", "attunement", "already"
 
     pause # 1 sec
     waitrt?
-    put "circle" # 4 sec
+    result = fput "circle", "You", "There is nothing else to face!" # 4 sec
 
     pause # 1 sec
     waitrt?
-    put "elbow" # 2 sec
+    result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
 
     pause # 1 sec
     waitrt?
-    put "elbow" # 2 sec
+    result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
+
+    if result == "There is nothing else to face!"
+      pause 2
+      next
+    end
 
     pause # 1 sec
     waitrt?

@@ -1,36 +1,42 @@
-pause
-waitrt?
-put "prep mb 18"
+loop {
+  pause
+  waitrt?
+  put "prep mb 18"
 
-pause
-waitrt?
-put "circle"
+  pause # 1 sec
+  waitrt?
+  result = fput "circle", "You", "There is nothing else to face!" # 4 sec
 
-pause
-waitrt?
-put "elbow"
+  pause # 1 sec
+  waitrt?
+  result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
 
-pause
-waitrt?
-put "skin"
+  pause # 1 sec
+  waitrt?
+  result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
 
-pause
-waitrt?
-put "loot"
+  if result == "There is nothing else to face!"
+    pause 2
+    next
+  end
 
-pause
-waitrt?
-put "analyze"
+  pause
+  waitrt?
+  put "skin"
 
-pause
-waitrt?
-put "app gryphon"
+  pause
+  waitrt?
+  put "loot goods"
 
-pause
-waitrt?
-put "cast"
+  pause
+  waitrt?
+  put "analyze"
 
-pause
-waitrt?
-put "face next"
+  pause
+  waitrt?
+  put "cast"
 
+  pause
+  waitrt?
+  put "face next"
+}
