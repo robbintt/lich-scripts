@@ -8,7 +8,6 @@
 custom_require.call(%w[drinfomon common combat_methods])
 include Combat  # from combat_methods
 
-
 loop {
 
   circle # get some balance

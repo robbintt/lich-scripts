@@ -1,3 +1,8 @@
+custom_require.call(%w[common])
+
+# mandatory for many things including hide?
+include DRC
+
 module Combat
 
   def facenext

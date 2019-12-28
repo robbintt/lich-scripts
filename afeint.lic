@@ -1,4 +1,4 @@
-custom_require.call(%w[common combat_methods])
+custom_require.call(%w[combat_methods])
 include Combat
 
 loop {
