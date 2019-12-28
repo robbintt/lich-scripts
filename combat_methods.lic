@@ -31,6 +31,30 @@ module Combat
     return false
   end
 
+  def lob
+    pause
+    waitrt?
+    put "lob"
+  end
+
+  def load
+    pause
+    waitrt?
+    put "load"
+  end
+
+  def aim
+    pause
+    waitrt?
+    put "aim"
+  end
+
+  def fire
+    pause
+    waitrt?
+    put "fire"
+  end
+
   def facenext
     pause
     waitrt?

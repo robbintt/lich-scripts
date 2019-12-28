@@ -21,13 +21,27 @@ module WeaponSwap
   end
 
   def getmyitem(item)
+    pause
     waitrt?
-    fput "get my #{item}", "You"
+    fput "get my #{item}", "You", "What were you referring to?"
+  end
+
+  def getitem(item, container="")
+    if container == ""
+      pause
+      waitrt?
+      fput "get #{item}", "You", "What were you referring to?"
+    else
+      pause
+      waitrt?
+      fput "get #{item} from #{container}", "You", "What were you referring to?"
+    end
   end
 
   def stowmyitem(item)
+    pause
     waitrt?
-    fput "stow my #{item}", "You"
+    fput "stow my #{item}", "You", "Stow what?"
   end
 
   def swapitem(item, target_swapstring="")

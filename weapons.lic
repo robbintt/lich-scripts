@@ -32,6 +32,26 @@ def offhand
   end
 end
 
+def lob_etc
+  lob
+  cleanup
+  while !mobs?
+    pause 2
+  end
+end
+
+def missile_etc
+  load
+  aim
+  pause 8
+  fire
+  cleanup
+  # this will face next, which is important for aiming
+  while !mobs?
+    pause 2
+  end
+end
+
 loop {
   # swap strings - passed into the swapitem method
   twohe_string = "a two-handed edged weapon"
@@ -64,28 +84,67 @@ loop {
   end
   stowmyitem("bar mace")
 
-  getitem("skefne")
+  getmyitem("skefne")
   while DRSkill.getxp('Polearms') < 17
     attack
   end
   stowmyitem("skefne")
 
-  getitem("nightstick")
+  getmyitem("nightstick")
   while DRSkill.getxp('Staves') < 17
     attack
   end
 
-  getitem("club")
+  getmyitem("club")
   while DRSkill.getxp('Offhand Weapon') < 17
     offhand
   end
   stowmyitem("nightstick")
   stowmyitem("club")
 
-  getitem("club")
+  getmyitem("club")
   while DRSkill.getxp('Small Blunt') < 17
     attack
   end
   stowmyitem("club")
 
+  getmyitem("skefne")
+  while DRSkill.getxp('Heavy Thrown') < 17
+    lob_etc
+    getmyitem("skefne")
+  end
+  stowmyitem("skefne")
+
+  getmyitem("club")
+  while DRSkill.getxp('Light Thrown') < 17
+    lob_etc
+    getmyitem("club")
+  end
+  stowmyitem("club")
+
+  getmyitem("stonebow")
+  while DRSkill.getxp('Crossbow') < 17
+    missile_etc
+    getmyitem("stone shard")
+    stowmyitem("stone shard")
+  end
+  stowmyitem("stonebow")
+
+  getmyitem("slingshot")
+  while DRSkill.getxp('Slings') < 17
+    missile_etc
+    getmyitem("stone shard")
+    stowmyitem("stone shard")
+  end
+  stowmyitem("slingshot")
+
+  getmyitem("shortbow")
+  while DRSkill.getxp('Bows') < 17
+    missile_etc
+    getitem("fang arrow")
+    stowmyitem("fang arrow")
+    getitem("fang arrow", "sack")
+    stowmyitem("fang arrow")
+  end
+  stowmyitem("shortbow")
 }
