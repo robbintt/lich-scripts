@@ -43,6 +43,12 @@ module Combat
     put "load"
   end
 
+  def unload
+    pause
+    waitrt?
+    put "unload"
+  end
+
   def aim
     pause
     waitrt?

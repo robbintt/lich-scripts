@@ -59,15 +59,22 @@ loop {
   twohb_string = "a two-handed blunt weapon"
   hb_string = "a heavy blunt weapon"
 
+  current_exp = 0
+  exp_increment = 5
+
   stowheld
 
   getmyitem("bastard sword")
   swapitem("bastard sword", twohe_string)
-  while DRSkill.getxp('Twohanded Edged') < 17
+  current_skill = 'Twohanded Edged'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
   end
   swapitem("bastard sword", he_string)
-  while DRSkill.getxp('Large Edged') < 17
+  current_skill = 'Large Edged'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
   end
   stowmyitem("bastard sword")
@@ -75,71 +82,73 @@ loop {
 
   getmyitem("bar mace")
   swapitem("bar mace", twohb_string)
-  while DRSkill.getxp('Twohanded Blunt') < 17
+  current_skill = 'Twohanded Blunt'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
   end
   swapitem("bar mace", hb_string)
-  while DRSkill.getxp('Large Blunt') < 17
+  current_skill = 'Large Blunt'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
   end
   stowmyitem("bar mace")
 
   getmyitem("skefne")
-  while DRSkill.getxp('Polearms') < 17
+  current_skill = 'Polearms'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
   end
   stowmyitem("skefne")
 
   getmyitem("nightstick")
-  while DRSkill.getxp('Staves') < 17
+  current_skill = 'Staves'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
   end
 
   getmyitem("club")
-  while DRSkill.getxp('Offhand Weapon') < 17
+  current_skill = 'Offhand Weapon'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     offhand
   end
   stowmyitem("nightstick")
   stowmyitem("club")
 
   getmyitem("club")
-  while DRSkill.getxp('Small Blunt') < 17
+  current_skill = 'Small Blunt'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
   end
   stowmyitem("club")
 
   getmyitem("skefne")
-  while DRSkill.getxp('Heavy Thrown') < 17
+  current_skill = 'Heavy Thrown'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     lob_etc
     getmyitem("skefne")
   end
   stowmyitem("skefne")
 
   getmyitem("club")
-  while DRSkill.getxp('Light Thrown') < 17
+  current_skill = 'Light Thrown'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     lob_etc
     getmyitem("club")
   end
   stowmyitem("club")
 
-  getmyitem("stonebow")
-  while DRSkill.getxp('Crossbow') < 17
-    missile_etc
-    getmyitem("stone shard")
-    stowmyitem("stone shard")
-  end
-  stowmyitem("stonebow")
-
-  getmyitem("slingshot")
-  while DRSkill.getxp('Slings') < 17
-    missile_etc
-    getmyitem("stone shard")
-    stowmyitem("stone shard")
-  end
-  stowmyitem("slingshot")
-
   getmyitem("shortbow")
-  while DRSkill.getxp('Bows') < 17
+  current_skill = 'Bow'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     missile_etc
     getitem("fang arrow")
     stowmyitem("fang arrow")
@@ -147,4 +156,24 @@ loop {
     stowmyitem("fang arrow")
   end
   stowmyitem("shortbow")
+
+  getmyitem("stonebow")
+  current_skill = 'Crossbow'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
+    missile_etc
+    getmyitem("stone shard")
+    stowmyitem("stone shard")
+  end
+  stowmyitem("stonebow")
+
+  getmyitem("slingshot")
+  current_skill = 'Slings'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
+    missile_etc
+    getmyitem("stone shard")
+    stowmyitem("stone shard")
+  end
+  stowmyitem("slingshot")
 }
