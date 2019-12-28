@@ -76,6 +76,11 @@ loop {
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("bastard sword")
 
@@ -86,12 +91,23 @@ loop {
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
+
   swapitem("bar mace", hb_string)
   current_skill = 'Large Blunt'
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("bar mace")
 
@@ -100,6 +116,11 @@ loop {
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("skefne")
 
@@ -108,6 +129,11 @@ loop {
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
 
   getmyitem("club")
@@ -115,6 +141,11 @@ loop {
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     offhand
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("nightstick")
   stowmyitem("club")
@@ -124,6 +155,11 @@ loop {
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     attack
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("club")
 
@@ -133,6 +169,11 @@ loop {
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     lob_etc
     getmyitem("skefne")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("skefne")
 
@@ -142,6 +183,11 @@ loop {
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     lob_etc
     getmyitem("club")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("club")
 
@@ -154,6 +200,11 @@ loop {
     stowmyitem("fang arrow")
     getitem("fang arrow", "sack")
     stowmyitem("fang arrow")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("shortbow")
 
@@ -164,6 +215,11 @@ loop {
     missile_etc
     getmyitem("stone shard")
     stowmyitem("stone shard")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("stonebow")
 
@@ -174,6 +230,11 @@ loop {
     missile_etc
     getmyitem("stone shard")
     stowmyitem("stone shard")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   stowmyitem("slingshot")
 }
