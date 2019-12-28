@@ -5,8 +5,10 @@
     -
 =end
 
-custom_require.call(%w[common])
+custom_require.call(%w[common combat_methods])
 include DRC  # wait_for_script_to_complete
+include Combat
+
 
 loop {
 
@@ -15,10 +17,10 @@ loop {
 
   wait_for_script_to_complete('oo_cleanup')
 
-  wait_for_script_to_complete('oo_debil')
+  full_debil
   wait_for_script_to_complete('oo_brawl')
 
-  wait_for_script_to_complete('oo_debil')
+  full_debil
   wait_for_script_to_complete('oo_brawl')
 
   wait_for_script_to_complete('oo_feint')
@@ -26,9 +28,9 @@ loop {
 
   wait_for_script_to_complete('oo_hunter')
 
-  #wait_for_script_to_complete('oo_debil')
-  wait_for_script_to_complete('oo_target')
-  wait_for_script_to_complete('oo_target')
+  full_debil
+  full_target
+  full_target
   wait_for_script_to_complete('oo_cleanup')
 
   wait_for_script_to_complete('oo_afeint')
