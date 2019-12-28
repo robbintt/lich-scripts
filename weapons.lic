@@ -7,33 +7,33 @@ include WeaponSwap
 include Combat
 
 def attack
+  while !mobs?
+    pause 2
+  end
   advance
   feint
   feint
   feint
   cleanup
-  while !mobs?
-    pause 2
-  end
 end
 
 def offhand
+  while !mobs?
+    pause 2
+  end
   advance
   feint_left
   feint_left
   feint_left
   cleanup
-  while !mobs?
-    pause 2
-  end
 end
 
 def lob_etc
-  lob
-  cleanup
   while !mobs?
     pause 2
   end
+  lob
+  cleanup
 end
 
 def missile_etc
