@@ -14,86 +14,86 @@ loop {
   other_critter = "other gryphon"
 
   circle # get some balance
-  cleanup
 
   # currently use debil to hit elbows and backtrain... for how long?
-  if DRSkill.getxp('Debilitation') < 34 or DRSkill.getxp('Brawling') < 34
+  if DRSkill.getxp('Debilitation') < 33 or DRSkill.getxp('Brawling') < 33
     debil
   end
-  if DRSkill.getxp('Brawling') < 34
+  if DRSkill.getxp('Brawling') < 33
     circle
     elbow
     elbow
     elbow
+    cleanup
   end
 
   # currently use debil to hit elbows and backtrain... for how long?
-  if DRSkill.getxp('Debilitation') < 34 or DRSkill.getxp('Brawling') < 34
+  if DRSkill.getxp('Debilitation') < 33 or DRSkill.getxp('Brawling') < 33
     debil
   end
-  if DRSkill.getxp('Brawling') < 34
+  if DRSkill.getxp('Brawling') < 33
     circle
     elbow
     elbow
     elbow
+    cleanup
   end
 
-  if DRSkill.getxp('Targeted Magic') < 34
+  if DRSkill.getxp('Targeted Magic') < 33
     target
   end
-  if DRSkill.getxp('Targeted Magic') < 34
+  if DRSkill.getxp('Targeted Magic') < 33
     target
+    cleanup
   end
-  cleanup
 
-  if DRSkill.getxp('Stealth') < 34
+  if DRSkill.getxp('Stealth') < 33
     ambush_feint
     ambush_feint
     cleanup
   end
 
-  if DRSkill.getxp('Stealth') < 34
+  if DRSkill.getxp('Stealth') < 33
     ambush_feint
     ambush_feint
     cleanup
   end
 
-  if DRSkill.getxp('Small Edged') < 34
+  if DRSkill.getxp('Small Edged') < 33
     feint
     feint
     feint
     cleanup
   end
 
-  # needs broken out
-  if DRSkill.getxp('Arcana') < 34
+  if DRSkill.getxp('Arcana') < 33
     gazecrystal
   end
 
-  if DRSkill.getxp('Perception') < 34
+  if DRSkill.getxp('Perception') < 33
     hunt
   end
 
-  if DRSkill.getxp('Astrology') < 34
+  if DRSkill.getxp('Astrology') < 33
     percmoons
   end
 
-  if DRSkill.getxp('Tactics') < 34
+  if DRSkill.getxp('Tactics') < 33
     analyze
   end
 
-  if DRSkill.getxp('Appraisal') < 34
+  if DRSkill.getxp('Appraisal') < 33
     app_critter(critter)
   end
-  if DRSkill.getxp('Appraisal') < 34
+  if DRSkill.getxp('Appraisal') < 33
     app_critter(other_critter)
   end
 
 
-  #if DRSkill.getxp('Scholarship') < 34
+  #if DRSkill.getxp('Scholarship') < 33
   #  recall_critter(critter)
   #end
-  #if DRSkill.getxp('Scholarship') < 34
+  #if DRSkill.getxp('Scholarship') < 33
   #  recall_critter(other_critter)
   #end
 }

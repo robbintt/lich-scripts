@@ -138,11 +138,8 @@ module Combat
     # how to abstract this with the method??
     result = fput "circle", "You", "There is nothing else to face!" # 4 sec
 
-    # 3 sec
-    elbow
-
-    # 3 sec
-    elbow
+    circle
+    circle
 
     if result == "There is nothing else to face!"
       return
