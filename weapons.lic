@@ -11,8 +11,6 @@ def attack
   feint
   feint
   feint
-  feint
-  feint
   cleanup
   while !mobs?
     pause 2
@@ -21,8 +19,6 @@ end
 
 def offhand
   advance
-  feint_left
-  feint_left
   feint_left
   feint_left
   feint_left
