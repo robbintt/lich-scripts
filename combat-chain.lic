@@ -14,14 +14,16 @@ loop {
 
   cleanup
 
-  full_feint
+  feint
+  feint
+  feint
   cleanup
 
-  full_debil
-  full_brawl
+  debil
+  brawl
 
-  full_debil
-  full_brawl
+  debil
+  brawl
 
   hunt_errata
 
@@ -30,16 +32,17 @@ loop {
   full_target
   cleanup
 
-  full_ambush_feint
-  full_ambush_feint
+  ambush_feint
+  ambush_feint
   cleanup
 
-  full_ambush_feint
-  full_ambush_feint
+  ambush_feint
+  ambush_feint
   cleanup
 
-  full_feint
-  full_feint
+  feint
+  feint
+  feint
   cleanup
 
 }

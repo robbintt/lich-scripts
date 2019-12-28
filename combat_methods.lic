@@ -16,6 +16,10 @@ module Combat
 
     pause
     waitrt?
+    put "analyze"
+
+    pause
+    waitrt?
     put "hunt"
 
     pause
@@ -41,6 +45,12 @@ module Combat
     pause
     waitrt?
     put "perc moons"
+  end
+
+  def feint
+    pause
+    waitrt?
+    put "feint"
   end
 
   def full_feint
@@ -69,6 +79,20 @@ module Combat
     pause
   end
 
+  def ambush_feint
+    pause
+    waitrt?
+    put "hide"
+
+    pause
+    waitrt?
+    put "advance"
+
+    pause
+    waitrt?
+    put "feint"
+  end
+
   def full_ambush_feint
     pause
     waitrt?
@@ -89,6 +113,26 @@ module Combat
     pause
     waitrt?
     put "loot goods"
+  end
+
+  def brawl
+
+    pause
+    waitrt?
+    put "circle"
+
+    pause
+    waitrt?
+    put "elbow"
+
+    pause
+    waitrt?
+    put "elbow"
+
+    pause
+    waitrt?
+    put "elbow"
+
   end
 
   def full_brawl
@@ -117,7 +161,7 @@ module Combat
     pause
   end
 
-  def full_target
+  def target
     pause
     waitrt?
     fput "target pd 18", "attunement", "already"
@@ -135,30 +179,18 @@ module Combat
     result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
 
     if result == "There is nothing else to face!"
-      pause 2
       return
     end
 
     pause # 1 sec
     waitrt?
     put "cast"
-
-    pause
-    waitrt?
-    put "skin"
-
-    waitrt?
-    put "loot goods"
-
-    pause
-    waitrt?
-    put "advance"
   end
 
-  def full_debil
+  def debil
     pause
     waitrt?
-    put "prep mb 18"
+    put "prep mb 20"
 
     pause # 1 sec
     waitrt?
@@ -166,11 +198,11 @@ module Combat
 
     pause # 1 sec
     waitrt?
-    result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
+    fput "elbow", "You", "There is nothing else to face!" # 2 sec
 
     pause # 1 sec
     waitrt?
-    result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
+    fput "elbow", "You", "There is nothing else to face!" # 2 sec
 
     if result == "There is nothing else to face!"
       return
@@ -178,22 +210,19 @@ module Combat
 
     pause
     waitrt?
-    put "skin"
-
-    pause
-    waitrt?
-    put "loot goods"
-
-    pause
-    waitrt?
-    put "analyze"
-
-    pause
-    waitrt?
     put "cast"
+  end
 
+  def facenext
     pause
     waitrt?
     put "face next"
   end
+
+  def advance
+    pause
+    waitrt?
+    put "advance"
+  end
+
 end
