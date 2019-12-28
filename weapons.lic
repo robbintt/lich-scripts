@@ -165,6 +165,8 @@ loop {
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
     lob_etc
     getmyitem("skefne")
+    lob_etc
+    getmyitem("skefne")
 
     # skip if no learning happened
     if current_exp == DRSkill.getxp(current_skill)
@@ -177,6 +179,9 @@ loop {
   current_skill = 'Light Thrown'
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 34 ? current_exp + exp_increment : 34)
+    # repeat so we get measurable exp gain
+    lob_etc
+    getmyitem("club")
     lob_etc
     getmyitem("club")
 
