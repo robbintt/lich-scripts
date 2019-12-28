@@ -34,6 +34,11 @@ loop {
     stowmyitem("fang arrow")
     getitem("fang arrow", "sack")
     stowmyitem("fang arrow")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   unload
   stowmyitem("fang arrow")
@@ -46,6 +51,11 @@ loop {
     missile_etc
     getmyitem("stone shard")
     stowmyitem("stone shard")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   unload
   stowmyitem("stone shard")
@@ -58,6 +68,11 @@ loop {
     missile_etc
     getmyitem("stone shard")
     stowmyitem("stone shard")
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
   end
   unload
   stowmyitem("stone shard")
