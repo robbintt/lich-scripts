@@ -5,10 +5,8 @@
     -
 =end
 
-custom_require.call(%w[common combat_methods])
-include DRC  # wait_for_script_to_complete
-include Combat
-
+custom_require.call(%w[drinfomon common combat_methods])
+include Combat  # from combat_methods
 
 loop {
 
@@ -32,13 +30,17 @@ loop {
   full_target
   cleanup
 
-  ambush_feint
-  ambush_feint
-  cleanup
+  if DRSkill.getxp('Stealth') < 34
+    ambush_feint
+    ambush_feint
+    cleanup
+  end
 
-  ambush_feint
-  ambush_feint
-  cleanup
+  if DRSkill.getxp('Stealth') < 34
+    ambush_feint
+    ambush_feint
+    cleanup
+  end
 
   feint
   feint
