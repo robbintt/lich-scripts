@@ -39,9 +39,9 @@ loop {
   twohb_string = "a two-handed blunt weapon"
   hb_string = "a heavy blunt weapon"
 
-  stow
+  stowheld
 
-  getitem("bastard sword")
+  getmyitem("bastard sword")
   swapitem("bastard sword", twohe_string)
   while DRSkill.getxp('Twohanded Edged') < 17
     attack
@@ -50,10 +50,10 @@ loop {
   while DRSkill.getxp('Large Edged') < 17
     attack
   end
-  stowitem("bastard sword")
+  stowmyitem("bastard sword")
 
 
-  getitem("bar mace")
+  getmyitem("bar mace")
   swapitem("bar mace", twohe_string)
   while DRSkill.getxp('Twohanded Blunt') < 17
     attack
@@ -62,13 +62,13 @@ loop {
   while DRSkill.getxp('Large Blunt') < 17
     attack
   end
-  stowitem("bar mace")
+  stowmyitem("bar mace")
 
   getitem("skefne")
   while DRSkill.getxp('Polearms') < 17
     attack
   end
-  stowitem("skefne")
+  stowmyitem("skefne")
 
   getitem("nightstick")
   while DRSkill.getxp('Staves') < 17
@@ -76,16 +76,16 @@ loop {
   end
 
   getitem("club")
-  while DRSkill.getxp('Offhand') < 17
+  while DRSkill.getxp('Offhand Weapon') < 17
     offhand
   end
-  stowitem("nightstick")
-  stowitem("club")
+  stowmyitem("nightstick")
+  stowmyitem("club")
 
   getitem("club")
   while DRSkill.getxp('Small Blunt') < 17
     attack
   end
-  stowitem("club")
+  stowmyitem("club")
 
 }

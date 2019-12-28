@@ -6,7 +6,7 @@ include DRC
 module WeaponSwap
   @@held_text = ""
 
-  def stow
+  def stowheld
     while @@held_text != "Both of your hands are empty."
       pause
       waitrt?
@@ -20,12 +20,12 @@ module WeaponSwap
     end
   end
 
-  def getitem(item)
+  def getmyitem(item)
     waitrt?
     fput "get my #{item}", "You"
   end
 
-  def stowitem(item)
+  def stowmyitem(item)
     waitrt?
     fput "stow my #{item}", "You"
   end
