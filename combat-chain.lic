@@ -12,37 +12,34 @@ include Combat
 
 loop {
 
-  waitrt?
-  put "inv held"
+  cleanup
 
-  wait_for_script_to_complete('oo_cleanup')
-
-  full_debil
-  wait_for_script_to_complete('oo_brawl')
+  full_feint
+  cleanup
 
   full_debil
-  wait_for_script_to_complete('oo_brawl')
+  full_brawl
 
-  wait_for_script_to_complete('oo_feint')
-  wait_for_script_to_complete('oo_cleanup')
+  full_debil
+  full_brawl
 
-  wait_for_script_to_complete('oo_hunter')
+  hunt_errata
 
   full_debil
   full_target
   full_target
-  wait_for_script_to_complete('oo_cleanup')
+  cleanup
 
-  wait_for_script_to_complete('oo_afeint')
-  wait_for_script_to_complete('oo_afeint')
-  wait_for_script_to_complete('oo_cleanup')
+  full_ambush_feint
+  full_ambush_feint
+  cleanup
 
-  wait_for_script_to_complete('oo_afeint')
-  wait_for_script_to_complete('oo_afeint')
-  wait_for_script_to_complete('oo_cleanup')
+  full_ambush_feint
+  full_ambush_feint
+  cleanup
 
-  wait_for_script_to_complete('oo_feint')
-  wait_for_script_to_complete('oo_feint')
-  wait_for_script_to_complete('oo_cleanup')
+  full_feint
+  full_feint
+  cleanup
 
 }

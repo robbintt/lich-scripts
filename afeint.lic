@@ -1,27 +1,6 @@
-
-pause
+custom_require.call(%w[common combat_methods])
+include Combat
 
 loop {
-
-
-    waitrt?
-    put "hide"
-    pause
-
-    waitrt?
-    put "advance"
-    pause
-
-    waitrt?
-    put "feint"
-    pause
-
-    waitrt?
-    put "skin"
-    pause
-
-    waitrt?
-    put "loot goods"
-    pause
-
+  full_ambush_feint
 }
