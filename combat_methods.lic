@@ -110,15 +110,14 @@ module Combat
 
     pause # 1 sec
     waitrt?
+    # how to abstract this with the method??
     result = fput "circle", "You", "There is nothing else to face!" # 4 sec
 
-    pause # 1 sec
-    waitrt?
-    result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
+    # 3 sec
+    elbow
 
-    pause # 1 sec
-    waitrt?
-    result = fput "elbow", "You", "There is nothing else to face!" # 2 sec
+    # 3 sec
+    elbow
 
     if result == "There is nothing else to face!"
       return
@@ -136,15 +135,14 @@ module Combat
 
     pause # 1 sec
     waitrt?
+    # how to abstract this with the method??
     result = fput "circle", "You", "There is nothing else to face!" # 4 sec
 
-    pause # 1 sec
-    waitrt?
-    fput "elbow", "You", "There is nothing else to face!" # 2 sec
+    # 3 sec
+    elbow
 
-    pause # 1 sec
-    waitrt?
-    fput "elbow", "You", "There is nothing else to face!" # 2 sec
+    # 3 sec
+    elbow
 
     if result == "There is nothing else to face!"
       return
