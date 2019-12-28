@@ -37,10 +37,10 @@ loop {
   end
 
   if DRSkill.getxp('Targeted Magic') < 34
-    full_target
+    target
   end
   if DRSkill.getxp('Targeted Magic') < 34
-    full_target
+    target
   end
   cleanup
 
