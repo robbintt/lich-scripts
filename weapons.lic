@@ -6,42 +6,85 @@ include DRC
 include WeaponSwap
 include Combat
 
+def attack
+  advance
+  feint
+  feint
+  feint
+  feint
+  feint
+  cleanup
+  while !mobs?
+    pause 2
+  end
+end
+
+def offhand
+  advance
+  feint left
+  feint left
+  feint left
+  feint left
+  feint left
+  cleanup
+  while !mobs?
+    pause 2
+  end
+end
+
 loop {
   twohe_string = "a two-handed edged weapon"
   he_string = "a heavy edged weapon"
+  twohb_string = "a two-handed blunt weapon"
+  hb_string = "a heavy blunt weapon"
 
   stow
-  getitem("sword")
 
-  swapitem("sword", twohe_string)
-  while DRSkill.getxp('Twohanded Edged') < 3
-    advance
-    feint
-    feint
-    feint
-    feint
-    feint
-    cleanup
-    while !mobs?
-      pause 2
-    end
+  getitem("bastard sword")
+  swapitem("bastard sword", twohe_string)
+  while DRSkill.getxp('Twohanded Edged') < 17
+    attack
+  end
+  swapitem("bastard sword", he_string)
+  while DRSkill.getxp('Large Edged') < 17
+    attack
+  end
+  stowitem("bastard sword")
+
+
+  getitem("bar mace")
+  swapitem("bar mace", twohe_string)
+  while DRSkill.getxp('Twohanded Blunt') < 17
+    attack
+  end
+  swapitem("bar mace", he_string)
+  while DRSkill.getxp('Large Blunt') < 17
+    attack
+  end
+  stowitem("bar mace")
+
+  getitem("skefne")
+  while DRSkill.getxp('Polearms') < 17
+    attack
+  end
+  stowitem("skefne")
+
+  getitem("nightstick")
+  while DRSkill.getxp('Staves') < 17
+    attack
   end
 
-  swapitem("sword", he_string)
-  while DRSkill.getxp('Heavy Edged') < 34
-    advance
-    feint
-    feint
-    feint
-    feint
-    feint
-    cleanup
-    while !mobs?
-      pause 2
-    end
+  getitem("club")
+  while DRSkill.getxp('Offhand') < 17
+    offhand
   end
+  stowitem("nightstick")
+  stowitem("club")
 
-  stowitem("sword")
+  getitem("club")
+  while DRSkill.getxp('Small Blunt') < 17
+    attack 
+  end
+  stowitem("club")
 
-  pause
 }
