@@ -2,5 +2,9 @@ custom_require.call(%w[common combat_methods])
 include Combat
 
 loop {
-  full_feint
+  feint
+  feint
+  feint
+  feint
+  cleanup
 }

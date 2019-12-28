@@ -2,5 +2,6 @@ custom_require.call(%w[common combat_methods])
 include Combat
 
 loop {
-  full_ambush_feint
+  ambush_feint
+  cleanup
 }
