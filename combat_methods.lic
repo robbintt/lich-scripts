@@ -15,6 +15,22 @@ module Combat
   @@interval_percmoons = 90
   @@timer_percmoons = Time.now - @@interval_percmoons # set to start right away
 
+  def mobs?
+    pause
+    waitrt?
+    test_advance = fput "advance", "What do you want to advance towards?", "You"
+    if test_advance != "What do you want to advance towards?"
+      return true
+    end
+    pause
+    waitrt?
+    test_facenext = fput "face next", "There is nothing else to face!", "You"
+    if test_facenext != "There is nothing else to face!"
+      return true
+    end
+    return false
+  end
+
   def facenext
     pause
     waitrt?

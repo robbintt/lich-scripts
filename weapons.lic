@@ -1,0 +1,47 @@
+custom_require.call(%w[drinfomon common combat_methods weapon_swap])
+
+# mandatory for many things including hide?
+include DRC
+
+include WeaponSwap
+include Combat
+
+loop {
+  twohe_string = "a two-handed edged weapon"
+  he_string = "a heavy edged weapon"
+
+  stow
+  getitem("sword")
+
+  swapitem("sword", twohe_string)
+  while DRSkill.getxp('Twohanded Edged') < 3
+    advance
+    feint
+    feint
+    feint
+    feint
+    feint
+    cleanup
+    while !mobs?
+      pause 2
+    end
+  end
+
+  swapitem("sword", he_string)
+  while DRSkill.getxp('Heavy Edged') < 34
+    advance
+    feint
+    feint
+    feint
+    feint
+    feint
+    cleanup
+    while !mobs?
+      pause 2
+    end
+  end
+
+  stowitem("sword")
+
+  pause
+}
