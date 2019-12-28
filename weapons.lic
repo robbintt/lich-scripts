@@ -54,11 +54,11 @@ loop {
 
 
   getmyitem("bar mace")
-  swapitem("bar mace", twohe_string)
+  swapitem("bar mace", twohb_string)
   while DRSkill.getxp('Twohanded Blunt') < 17
     attack
   end
-  swapitem("bar mace", he_string)
+  swapitem("bar mace", hb_string)
   while DRSkill.getxp('Large Blunt') < 17
     attack
   end
