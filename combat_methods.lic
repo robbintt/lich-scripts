@@ -56,15 +56,25 @@ module Combat
   def ambush_feint
     pause
     waitrt?
-    put "hide"
+    hide? # hide if not hiding
 
+    if hiding?
+      pause
+      waitrt?
+      put "advance"
+    end
+
+    if hiding?
+      pause
+      waitrt?
+      put "feint"
+    end
+  end
+
+  def circle
     pause
     waitrt?
-    put "advance"
-
-    pause
-    waitrt?
-    put "feint"
+    put "circle"
   end
 
   def brawl

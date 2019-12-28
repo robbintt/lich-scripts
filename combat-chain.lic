@@ -8,43 +8,57 @@
 custom_require.call(%w[drinfomon common combat_methods])
 include Combat  # from combat_methods
 
+
 loop {
 
+  circle # get some balance
   cleanup
 
-  feint
-  feint
-  feint
+  # currently use debil to hit elbows and backtrain... for how long?
+  if DRSkill.getxp('Debilitation') < 34 or DRSkill.getxp('Brawling') < 34
+    debil
+  end
+  if DRSkill.getxp('Brawling') < 34
+    brawl
+  end
+
+  # currently use debil to hit elbows and backtrain... for how long?
+  if DRSkill.getxp('Debilitation') < 34 or DRSkill.getxp('Brawling') < 34
+    debil
+  end
+  if DRSkill.getxp('Brawling') < 34
+    brawl
+  end
+
+  if DRSkill.getxp('Targeted Magic') < 34
+    full_target
+  end
+  if DRSkill.getxp('Targeted Magic') < 34
+    full_target
+  end
   cleanup
 
-  debil
-  brawl
+  if DRSkill.getxp('Stealth') < 34
+    ambush_feint
+    ambush_feint
+    cleanup
+  end
 
-  debil
-  brawl
+  if DRSkill.getxp('Stealth') < 34
+    ambush_feint
+    ambush_feint
+    cleanup
+  end
 
+  if DRSkill.getxp('Small Edged') < 34
+    feint
+    feint
+    feint
+    cleanup
+  end
+
+  # needs broken out
   hunt_errata
 
-  full_debil
-  full_target
-  full_target
-  cleanup
-
-  if DRSkill.getxp('Stealth') < 34
-    ambush_feint
-    ambush_feint
-    cleanup
-  end
-
-  if DRSkill.getxp('Stealth') < 34
-    ambush_feint
-    ambush_feint
-    cleanup
-  end
-
-  feint
-  feint
-  feint
-  cleanup
 
 }
