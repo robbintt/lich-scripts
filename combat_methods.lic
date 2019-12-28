@@ -26,7 +26,7 @@ module Combat
   def retreat
     pause
     waitrt?
-    retreat
+    put "retreat"
   end
 
   def cleanup
