@@ -1,8 +1,7 @@
+custom_require.call(%w[common combat_methods])
+include Combat
 
 loop {
-
-    pause 3
-    waitrt?
-    put "retreat"
-
+  retreat
+  pause 2 # slow it down a bit
 }

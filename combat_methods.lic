@@ -54,20 +54,15 @@ module Combat
   end
 
   def ambush_feint
-    pause
-    waitrt?
-    hide? # hide if not hiding
+
+    hide
 
     if hiding?
-      pause
-      waitrt?
-      put "advance"
+      advance
     end
 
     if hiding?
-      pause
-      waitrt?
-      put "feint"
+      feint
     end
   end
 
@@ -157,6 +152,18 @@ module Combat
     pause
     waitrt?
     put "advance"
+  end
+
+  def hide
+    pause
+    waitrt?
+    hide?
+  end
+
+  def retreat
+    pause
+    waitrt?
+    retreat
   end
 
 end
