@@ -21,11 +21,11 @@ end
 
 def offhand
   advance
-  feint left
-  feint left
-  feint left
-  feint left
-  feint left
+  feint_left
+  feint_left
+  feint_left
+  feint_left
+  feint_left
   cleanup
   while !mobs?
     pause 2
@@ -84,7 +84,7 @@ loop {
 
   getitem("club")
   while DRSkill.getxp('Small Blunt') < 17
-    attack 
+    attack
   end
   stowitem("club")
 

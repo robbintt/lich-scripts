@@ -71,6 +71,12 @@ module Combat
     put "feint"
   end
 
+  def feint_left
+    pause
+    waitrt?
+    put "feint left"
+  end
+
   def ambush_feint
 
     hide
