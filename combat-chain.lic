@@ -90,10 +90,10 @@ loop {
   end
 
 
-  if DRSkill.getxp('Scholarship') < 34
-    recall_critter(critter)
-  end
-  if DRSkill.getxp('Scholarship') < 34
-    recall_critter(other_critter)
-  end
+  #if DRSkill.getxp('Scholarship') < 34
+  #  recall_critter(critter)
+  #end
+  #if DRSkill.getxp('Scholarship') < 34
+  #  recall_critter(other_critter)
+  #end
 }

@@ -9,6 +9,12 @@ module Combat
   @@interval_gazecrystal = 180
   @@timer_gazecrystal = Time.now - @@interval_gazecrystal # set to start right away
 
+  @@interval_hunt = 45
+  @@timer_hunt = Time.now - @@interval_hunt # set to start right away
+
+  @@interval_percmoons = 90
+  @@timer_percmoons = Time.now - @@interval_percmoons # set to start right away
+
   def facenext
     pause
     waitrt?
@@ -87,9 +93,12 @@ module Combat
   end
 
   def hunt
-    pause
-    waitrt?
-    put "hunt"
+    if (Time.now - @@timer_hunt) > @@interval_hunt
+      @@timer_hunt = Time.now
+      pause
+      waitrt?
+      put "hunt"
+    end
   end
 
   def app_critter(critter)
@@ -105,9 +114,12 @@ module Combat
   end
 
   def percmoons
-    pause
-    waitrt?
-    put "perc moons"
+    if (Time.now - @@timer_percmoons) > @@interval_percmoons
+      @@timer_percmoons = Time.now
+      pause
+      waitrt?
+      put "perc moons"
+    end
   end
 
   def analyze
