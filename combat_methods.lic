@@ -1,4 +1,29 @@
 module Combat
+
+  def facenext
+    pause
+    waitrt?
+    put "face next"
+  end
+
+  def advance
+    pause
+    waitrt?
+    put "advance"
+  end
+
+  def hide
+    pause
+    waitrt?
+    hide?
+  end
+
+  def retreat
+    pause
+    waitrt?
+    retreat
+  end
+
   def cleanup
     pause
     waitrt?
@@ -7,6 +32,37 @@ module Combat
     pause
     waitrt?
     put "loot goods"
+  end
+
+  def feint
+    pause
+    waitrt?
+    put "feint"
+  end
+
+  def ambush_feint
+
+    hide
+
+    if hiding?
+      advance
+    end
+
+    if hiding?
+      feint
+    end
+  end
+
+  def circle
+    pause
+    waitrt?
+    put "circle"
+  end
+
+  def elbow
+    pause
+    waitrt?
+    put "elbow"
   end
 
   def hunt_errata
@@ -45,49 +101,6 @@ module Combat
     pause
     waitrt?
     put "perc moons"
-  end
-
-  def feint
-    pause
-    waitrt?
-    put "feint"
-  end
-
-  def ambush_feint
-
-    hide
-
-    if hiding?
-      advance
-    end
-
-    if hiding?
-      feint
-    end
-  end
-
-  def circle
-    pause
-    waitrt?
-    put "circle"
-  end
-
-  def brawl
-    pause
-    waitrt?
-    put "circle"
-
-    pause
-    waitrt?
-    put "elbow"
-
-    pause
-    waitrt?
-    put "elbow"
-
-    pause
-    waitrt?
-    put "elbow"
   end
 
   def target
@@ -141,29 +154,4 @@ module Combat
     waitrt?
     put "cast"
   end
-
-  def facenext
-    pause
-    waitrt?
-    put "face next"
-  end
-
-  def advance
-    pause
-    waitrt?
-    put "advance"
-  end
-
-  def hide
-    pause
-    waitrt?
-    hide?
-  end
-
-  def retreat
-    pause
-    waitrt?
-    retreat
-  end
-
 end

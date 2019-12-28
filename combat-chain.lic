@@ -19,7 +19,10 @@ loop {
     debil
   end
   if DRSkill.getxp('Brawling') < 34
-    brawl
+    circle
+    elbow
+    elbow
+    elbow
   end
 
   # currently use debil to hit elbows and backtrain... for how long?
@@ -27,7 +30,10 @@ loop {
     debil
   end
   if DRSkill.getxp('Brawling') < 34
-    brawl
+    circle
+    elbow
+    elbow
+    elbow
   end
 
   if DRSkill.getxp('Targeted Magic') < 34
