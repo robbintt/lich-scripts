@@ -5,6 +5,10 @@ include DRC
 
 module Combat
 
+  # this could be concentration based too
+  @@interval_gazecrystal = 180
+  @@timer_gazecrystal = Time.now - @@interval_gazecrystal # set to start right away
+
   def facenext
     pause
     waitrt?
@@ -70,42 +74,46 @@ module Combat
     put "elbow"
   end
 
-  def hunt_errata
-    pause
-    waitrt?
-    put "gaze my sano crystal"
+  def gazecrystal
+    #echo "Now #{Time.now}"
+    #echo "Timer: #{@@timer_gazecrystal}"
+    #echo "Difference: #{Time.now - @@timer_gazecrystal}"
+    if (Time.now - @@timer_gazecrystal) > @@interval_gazecrystal
+      @@timer_gazecrystal = Time.now
+      pause
+      waitrt?
+      put "gaze my sano crystal"
+    end
+  end
 
-    pause
-    waitrt?
-    put "analyze"
-
+  def hunt
     pause
     waitrt?
     put "hunt"
+  end
 
+  def app_critter(critter)
     pause
     waitrt?
-    put "analyze"
+    put "app #{critter}"
+  end
 
+  def recall_critter(critter)
     pause
     waitrt?
-    put "app gryphon"
+    put "recall #{critter}"
+  end
 
-    pause
-    waitrt?
-    put "app other gryphon"
-
-    pause
-    waitrt?
-    put "recall gryphon"
-
-    pause
-    waitrt?
-    put "recall other gryphon"
-
+  def percmoons
     pause
     waitrt?
     put "perc moons"
+  end
+
+  def analyze
+    pause
+    waitrt?
+    put "analyze"
   end
 
   def target
@@ -130,7 +138,7 @@ module Combat
 
     pause # 1 sec
     waitrt?
-    put "cast"
+    fput "cast", "You"
   end
 
   def debil
@@ -155,6 +163,6 @@ module Combat
 
     pause
     waitrt?
-    put "cast"
+    fput "cast", "You"
   end
 end

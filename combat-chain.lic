@@ -10,6 +10,9 @@ include Combat  # from combat_methods
 
 loop {
 
+  critter = "gryphon"
+  other_critter = "other gryphon"
+
   circle # get some balance
   cleanup
 
@@ -63,7 +66,34 @@ loop {
   end
 
   # needs broken out
-  hunt_errata
+  if DRSkill.getxp('Arcana') < 34
+    gazecrystal
+  end
+
+  if DRSkill.getxp('Perception') < 34
+    hunt
+  end
+
+  if DRSkill.getxp('Astrology') < 34
+    percmoons
+  end
+
+  if DRSkill.getxp('Tactics') < 34
+    analyze
+  end
+
+  if DRSkill.getxp('Appraisal') < 34
+    app_critter(critter)
+  end
+  if DRSkill.getxp('Appraisal') < 34
+    app_critter(other_critter)
+  end
 
 
+  if DRSkill.getxp('Scholarship') < 34
+    recall_critter(critter)
+  end
+  if DRSkill.getxp('Scholarship') < 34
+    recall_critter(other_critter)
+  end
 }
