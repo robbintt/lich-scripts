@@ -33,6 +33,7 @@ def offhand
 end
 
 loop {
+  # swap strings - passed into the swapitem method
   twohe_string = "a two-handed edged weapon"
   he_string = "a heavy edged weapon"
   twohb_string = "a two-handed blunt weapon"
