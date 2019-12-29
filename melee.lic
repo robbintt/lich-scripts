@@ -28,26 +28,6 @@ def offhand
   cleanup
 end
 
-def lob_etc
-  while !mobs?
-    pause 2
-  end
-  lob
-  cleanup
-end
-
-def missile_etc
-  load
-  aim
-  pause 8
-  fire
-  cleanup
-  # this will face next, which is important for aiming
-  while !mobs?
-    pause 2
-  end
-end
-
 loop {
   # swap strings - passed into the swapitem method
   twohe_string = "a two-handed edged weapon"
@@ -158,84 +138,4 @@ loop {
     end
   end
   stowmyitem("club")
-
-  getmyitem("skefne")
-  current_skill = 'Heavy Thrown'
-  current_exp = DRSkill.getxp(current_skill)
-  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
-    lob_etc
-    getmyitem("skefne")
-    lob_etc
-    getmyitem("skefne")
-
-    # skip if no learning happened
-    if current_exp == DRSkill.getxp(current_skill)
-      break
-    end
-  end
-  stowmyitem("skefne")
-
-  getmyitem("club")
-  current_skill = 'Light Thrown'
-  current_exp = DRSkill.getxp(current_skill)
-  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
-    # repeat so we get measurable exp gain
-    lob_etc
-    getmyitem("club")
-    lob_etc
-    getmyitem("club")
-
-    # skip if no learning happened
-    if current_exp == DRSkill.getxp(current_skill)
-      break
-    end
-  end
-  stowmyitem("club")
-
-  getmyitem("shortbow")
-  current_skill = 'Bow'
-  current_exp = DRSkill.getxp(current_skill)
-  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
-    missile_etc
-    getitem("fang arrow")
-    stowmyitem("fang arrow")
-    getitem("fang arrow", "sack")
-    stowmyitem("fang arrow")
-
-    # skip if no learning happened
-    if current_exp == DRSkill.getxp(current_skill)
-      break
-    end
-  end
-  stowmyitem("shortbow")
-
-  getmyitem("stonebow")
-  current_skill = 'Crossbow'
-  current_exp = DRSkill.getxp(current_skill)
-  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
-    missile_etc
-    getmyitem("stone shard")
-    stowmyitem("stone shard")
-
-    # skip if no learning happened
-    if current_exp == DRSkill.getxp(current_skill)
-      break
-    end
-  end
-  stowmyitem("stonebow")
-
-  getmyitem("slingshot")
-  current_skill = 'Slings'
-  current_exp = DRSkill.getxp(current_skill)
-  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
-    missile_etc
-    getmyitem("stone shard")
-    stowmyitem("stone shard")
-
-    # skip if no learning happened
-    if current_exp == DRSkill.getxp(current_skill)
-      break
-    end
-  end
-  stowmyitem("slingshot")
 }
