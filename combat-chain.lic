@@ -19,13 +19,14 @@ loop {
   if DRSkill.getxp('Debilitation') < 33 or DRSkill.getxp('Brawling') < 33
     debil
   end
-  if DRSkill.getxp('Brawling') < 33
-    circle
-    elbow
-    elbow
-    elbow
-    cleanup
-  end
+  # we brawl plenty at the moment
+  #if DRSkill.getxp('Brawling') < 33
+  #  circle
+  #  elbow
+  #  elbow
+  #  elbow
+  #  cleanup
+  #end
 
   # currently use debil to hit elbows and backtrain... for how long?
   if DRSkill.getxp('Debilitation') < 33 or DRSkill.getxp('Brawling') < 33
