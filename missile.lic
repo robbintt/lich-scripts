@@ -30,7 +30,7 @@ end
 loop {
 
   current_exp = 0
-  exp_increment = 5
+  exp_increment = 8
 
   stowheld
 
