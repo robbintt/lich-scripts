@@ -32,7 +32,10 @@ class BuffWatcher
     # need to use full name of spell
     @buffs = {'Shadows' => {'min' => 1, 'power' => 100},
               'Seer\'s Sense' => {'min' => 15, 'power' => 80},
+              'Minor Physical Protection' => {'min' => 1, 'power' => 100},
               'Clear Vision' => {'min' => 1, 'power' => 100}}
+
+    @tattoo_spell = 'Minor Physical Protection'
 
     # max amount to power spell from harness
     @max_spell_size = 30
@@ -59,6 +62,9 @@ class BuffWatcher
   end
   def buffs
     @buffs
+  end
+  def tattoo_spell
+    @tattoo_spell
   end
   def max_spell_size
     @max_spell_size
@@ -92,7 +98,11 @@ class BuffWatcher
     # dead simple, no dependencies
     # if it doesnt work, the nanny tries again later
     waitrt?
-    fput "prep #{spell} #{mana}"
+    if spell == tattoo_spell
+      fput "invoke tattoo"
+    else
+      fput "prep #{spell} #{mana}"
+    end
     pause 20
     waitrt?
     fput "cast", "You gesture.", "You"
@@ -222,6 +232,8 @@ loop {
         # cap the prep at max prep
         if ideal_prep_size <= max_prep
           prep_size = ideal_prep_size
+        elsif buff == buffwatcher.tattoo_spell
+          prep_size = min_prep
         else
           prep_size = max_prep
         end

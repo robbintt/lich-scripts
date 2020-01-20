@@ -74,9 +74,9 @@ loop {
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
     missile_etc
     getitem("fang arrow")
-    stowmyitem("fang arrow")
+    stowitem("fang arrow")
     getitem("fang arrow", "sack")
-    stowmyitem("fang arrow")
+    stowitem("fang arrow")
 
     # skip if no learning happened
     if current_exp == DRSkill.getxp(current_skill)
@@ -84,7 +84,7 @@ loop {
     end
   end
   unload
-  stowmyitem("fang arrow")
+  stowitem("fang arrow")
   stowmyitem("shortbow")
 
   getmyitem("stonebow")

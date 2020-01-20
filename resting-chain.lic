@@ -8,32 +8,36 @@
 custom_require.call(%w[common])
 include DRC  # wait_for_script_to_complete
 
-def percmoons
-
-  pause
-  waitrt?
-  put "inv held"
+def power
   pause
   waitrt?
   put "perc moons"
-
+  pause
+  waitrt?
+  put "perc mana"
 end
 
 loop {
 
-
-  percmoons
-  wait_for_script_to_complete('tattoo')
-  percmoons
-  wait_for_script_to_complete('locks')
-  percmoons
-  wait_for_script_to_complete('rocks')
-  percmoons
-  wait_for_script_to_complete('climb')
-  percmoons
-  wait_for_script_to_complete('study')
-  percmoons
+  power
   wait_for_script_to_complete('sym')
-  percmoons
+  while DRSkill.getxp('Enchanting') < 30
+    power
+    wait_for_script_to_complete('workorders', ['artificing'] )
+  end
+  power
+  wait_for_script_to_complete('go2', ['475'] ) # haven ranger tent
+  wait_for_script_to_complete('tattoo')
+  power
+  wait_for_script_to_complete('locks')
+  power
+  wait_for_script_to_complete('rocks')
+  power
+  wait_for_script_to_complete('go2', ['3353'] ) # lang bin
+  power
+  wait_for_script_to_complete('climb')
+  power
+  wait_for_script_to_complete('study')
+  power
 
 }

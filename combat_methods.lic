@@ -171,6 +171,10 @@ module Combat
       pause
       waitrt?
       put "perc moons"
+      pause
+      waitrt?
+      # unify with resting-chain power method
+      put "perc mana"
     end
   end
 

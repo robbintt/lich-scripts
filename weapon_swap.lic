@@ -44,6 +44,12 @@ module WeaponSwap
     fput "stow my #{item}", "You", "Stow what?"
   end
 
+  def stowitem(item)
+    pause
+    waitrt?
+    fput "stow my #{item}", "You", "Stow what?"
+  end
+
   def swapitem(item, target_swapstring="")
     tries = 3
     swapstring = ""
