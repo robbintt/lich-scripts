@@ -38,12 +38,12 @@ end
 magictrainer = MagicTrainer.new
 
 # need to thread an RT thing into this script
-while DRSkill.getxp('Utility') < 34 or DRSkill.getxp('Augmentation') < 34 or DRSkill.getxp('Lunar Magic') < 34
-  if DRSkill.getxp('Utility') < 34
+while DRSkill.getxp('Utility') < 28 or DRSkill.getxp('Augmentation') < 28 or DRSkill.getxp('Lunar Magic') < 34
+  if DRSkill.getxp('Utility') < 28 
     magictrainer.utilmagic
   end
   # temp catchall for primary magic
-  if DRSkill.getxp('Augmentation') < 34 or DRSkill.getxp('Lunar Magic') < 34
+  if DRSkill.getxp('Augmentation') < 28 or DRSkill.getxp('Lunar Magic') < 34
     magictrainer.augmagic
   end
 end

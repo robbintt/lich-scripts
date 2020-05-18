@@ -1,0 +1,24 @@
+# This is designed to start with lich
+#
+# I really need persistent memory for this
+# I only want to run it the first time I login every day
+class RPASniper 
+  @@interval_percmoons = 90
+  @@timer_percmoons = Time.now - @@interval_percmoons # set to start right away
+
+  def cycle_rpa
+    if (Time.now - @@timer_percmoons) > @@interval_percmoons
+      @@timer_percmoons = Time.now
+      pause
+      waitrt?
+      # let this fail out, it runs constantly
+      put "rpa toggle"
+      pause 310
+      put "rpa toggle"
+    end
+  end
+end
+
+
+rpasniper = RPASniper.new
+rpasniper.cycle_rpa

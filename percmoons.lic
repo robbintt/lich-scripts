@@ -1,0 +1,22 @@
+# This is designed to start with lich and run constantly
+class PercMoons 
+  @@interval_percmoons = 90
+  @@timer_percmoons = Time.now - @@interval_percmoons # set to start right away
+
+  def percmoons
+    if (Time.now - @@timer_percmoons) > @@interval_percmoons
+      @@timer_percmoons = Time.now
+      pause
+      waitrt?
+      # let this fail out, it runs constantly
+      put "perc moons"
+    end
+  end
+end
+
+
+pm = PercMoons.new
+loop {
+  pm.percmoons
+  pause 2
+}
