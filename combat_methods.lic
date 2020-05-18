@@ -168,9 +168,11 @@ module Combat
   def percmoons
     if (Time.now - @@timer_percmoons) > @@interval_percmoons
       @@timer_percmoons = Time.now
-      pause
-      waitrt?
-      put "perc moons"
+      # replaced this with an always-running script
+      # if i cancel that method, just uncomment this
+      #pause
+      #waitrt?
+      #put "perc moons"
       pause
       waitrt?
       # unify with resting-chain power method
