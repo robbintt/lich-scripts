@@ -67,8 +67,16 @@ class RPASniper
   end
 
   def cycle_rpa_daily_on_login
-    # TODO - remove trailing "or true", for testing
-    if UserVars.RPASpent < Date.today.to_s and rpa_exists?
+
+    # exit early if no RPA
+    if not rpa_exists?
+      echo "***"
+      echo "*** WARNING: Activate a new Level 4 RPA, you may need to get some RPAs."
+      echo "***"
+      return
+    end
+
+    if not UserVars.RPASpent or UserVars.RPASpent < Date.today.to_s       
       # TODO: can i add a check for rested exp or something?
       # because this doesn't work if i login after midnight
       UserVars.RPASpent = Date.today.to_s
@@ -76,13 +84,16 @@ class RPASniper
       sleep 10  # small spacer, stop_rpa will retry
       #stop_rpa # rpa_killer will clean up, it should be called after this
     else
-      echo "RPA Already Used Today: Already ran RPA on first time startup. It's probably too late for your rested exp now, catch it tomorrow. To manually disable before sleeping, set the UserVars.RPASpent to yesterday or nil."
+      echo "***"
+      echo "*** RPA Already Used Today: Already ran RPA on first time startup. It's probably too late for your rested exp now, catch it tomorrow. To manually disable before sleeping, run ';vars delete RPASpent'"
+      echo "***"
     end
   end
 
   def rpa_killer
     # don't allow a RPA to run unless I just logged in
     # watch constantly, designed to always be running
+    # might want to warn the user to activate another RPA every 5 mins here if they don't have one active
     loop {
       stop_rpa
       pause 305
