@@ -1,24 +1,100 @@
-# This is designed to start with lich
-#
-# I really need persistent memory for this
-# I only want to run it the first time I login every day
+# This is designed to start with lich autostart
+# Toggle an RPA on first login each day
+require 'date'
+
+# not sure what I need for UserVars. I guess nothing?
+# custom_require.call(%w[common drinfomon common-travel equipmanager])
+
 class RPASniper 
   @@interval_percmoons = 90
   @@timer_percmoons = Time.now - @@interval_percmoons # set to start right away
 
-  def cycle_rpa
-    if (Time.now - @@timer_percmoons) > @@interval_percmoons
-      @@timer_percmoons = Time.now
-      pause
-      waitrt?
-      # let this fail out, it runs constantly
-      put "rpa toggle"
-      pause 310
-      put "rpa toggle"
+  # tested this once... seems fine
+  # no state also yields false by default
+  def rpa_active?
+    rpa_check = fput "rpa check", "Your role-playing award information:"
+    rpa_state_str = matchtimeout 3, "Status:"
+    # check rpa_exists? separately with that method
+    if /Status: Active/.match(rpa_state_str)
+      rpa_state = true
+    else
+      rpa_state = false
     end
+    rpa_state
+  end
+    
+  # stub
+  def rpa_exists?
+    rpa_check = fput "rpa check", "Your role-playing award information:"
+    rpa_exists_str = matchtimeout 3, "Status:"
+    # check rpa_exists? separately with that method
+    if rpa_exists_str
+      rpa_exists = true
+    else
+      rpa_exists = false
+    end
+    rpa_exists
+  end
+
+  def start_rpa
+    # example: "You unpause your level 4 roleplaying award."
+    if not rpa_active?
+      fput "rpa toggle", "You unpause your.", "But you don't have an active roleplaying award to pause!", "You need to wait a few minutes before doing that again."
+      # if we need to wait a few minutes, it will be too late to capture rested, so we will bail and today will not use 5 mins of RPA
+    else
+      echo "RPA already active, how did you get here?"
+    end
+  end
+
+  def stop_rpa
+    if rpa_active?
+      # does this support multiple possible strings
+      fput "rpa toggle", "You pause your roleplaying award.", "But you don't have an active roleplaying award to pause!", "You need to wait a few minutes before doing that again."
+
+      # instead of using this, use a daemon to test this each minute
+      # not sure if i can skip the assignment
+      #need_to_wait = matchtimeout 3, "You need to wait a few minutes before doing that again."
+      #if need_to_wait
+      #  sleep 60
+      #  # hope this recursion is fine
+      #  stop_rpa
+      #end
+
+    # not using this anymore
+    #else
+    #  echo "RPA already paused, how did you get here?"
+    end
+  end
+
+  def cycle_rpa_daily_on_login
+    # TODO - remove trailing "or true", for testing
+    if UserVars.RPASpent < Date.today.to_s and rpa_exists?
+      # TODO: can i add a check for rested exp or something?
+      # because this doesn't work if i login after midnight
+      UserVars.RPASpent = Date.today.to_s
+      start_rpa
+      sleep 10  # small spacer, stop_rpa will retry
+      #stop_rpa # rpa_killer will clean up, it should be called after this
+    else
+      echo "RPA Already Used Today: Already ran RPA on first time startup. It's probably too late for your rested exp now, catch it tomorrow. To manually disable before sleeping, set the UserVars.RPASpent to yesterday or nil."
+    end
+  end
+
+  def rpa_killer
+    # don't allow a RPA to run unless I just logged in
+    # watch constantly, designed to always be running
+    loop {
+      stop_rpa
+      pause 305
+    }
   end
 end
 
-
 rpasniper = RPASniper.new
-rpasniper.cycle_rpa
+
+# only runs on first login per calendar day, stored in local vars
+# this would run 1x per computer logged into
+rpasniper.cycle_rpa_daily_on_login
+
+# run constantly, check every 5 minutes
+rpasniper.rpa_killer
