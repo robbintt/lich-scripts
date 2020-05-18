@@ -5,6 +5,9 @@ require 'date'
 # not sure what I need for UserVars. I guess nothing?
 # custom_require.call(%w[common drinfomon common-travel equipmanager])
 
+no_kill_all
+no_pause_all
+
 class RPASniper 
   def rpa_active?
     rpa_check = fput "rpa check", "Your role-playing award information:"
