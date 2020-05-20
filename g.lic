@@ -15,6 +15,10 @@ if variable[0] == 'bin'
   wait_for_script_to_complete('go2', ['3353'])
 end
 
+if variable[0] == 'tent'
+  wait_for_script_to_complete('go2', ['475'])
+end
+
 if variable[0] == 'gryphons'
   wait_for_script_to_complete('go2', ['8626'])
 end
