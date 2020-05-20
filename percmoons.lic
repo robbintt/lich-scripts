@@ -4,7 +4,7 @@ no_kill_all
 no_pause_all
 
 class PercMoons 
-  @@interval_percmoons = 90
+  @@interval_percmoons = 180
   @@timer_percmoons = Time.now - @@interval_percmoons # set to start right away
 
   def percmoons
