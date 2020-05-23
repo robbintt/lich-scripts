@@ -33,18 +33,19 @@ class BuffWatcher
 
     # need to use full name of spell
     @buffs = {'Shadowling' => {'min' => 1, 'power' => 75},
+              'Aura Sight' => {'min' => 1, 'power' => 100},
               'Shadows' => {'min' => 1, 'power' => 100},
               'Seer\'s Sense' => {'min' => 15, 'power' => 80},
               'Minor Physical Protection' => {'min' => 1, 'power' => 100},
-              'Shadowling' => {'min' => 15, 'power' => 80},
+              'Shadowling' => {'min' => 15, 'power' => 75},
               'Clear Vision' => {'min' => 1, 'power' => 100}}
 
     @tattoo_spell = 'Minor Physical Protection'
     @shadowling_spell = 'Shadowling'
 
     # max amount to power spell from harness
-    @max_spell_size = 30
-    @max_single_camb_charge = 40
+    @max_spell_size = 20
+    @max_single_camb_charge = 30
     @charge_cambrinth = true
     @minutes_left_to_recast_at = 2
 
@@ -203,8 +204,7 @@ end
 =end
 
 loop {
-  # once i figure out how to compare it to something, pass the reset condition as a number - on a per-spell basis
-  #   - 0 means reset only after spell wears off, 10 means reset when 10 roisaen left on spell, etc
+  pause
   buffwatcher.buffs.each do |buff, attrs|
     # seek to maximize camb usage and minimize harness usage
     # but stay within bounds for each
@@ -232,6 +232,8 @@ loop {
     # this code first seeks to maximize from camb, then if the camb is undercharged
     # it seeks to pull more from the prep size until the max prep size
     # then it either charges the camb or casts undersized spells
+    # once i figure out how to compare it to something, pass the reset condition as a number - on a per-spell basis
+    #   - 0 means reset only after spell wears off, 10 means reset when 10 roisaen left on spell, etc
     if !buffstate or buffstate < buffwatcher.minutes_left_to_recast_at
       if min_from_camb > 0
         # does this instance @variable work because its in a function sig in the instance?
