@@ -8,6 +8,8 @@
   Future:
   - see about importing cambrinth functions from cambwatcher?
   - detect if you already have a spell prepped
+  - flag spells as combat rebuff or not
+  - implement a "wait" timer if a spell is already being prepped
   - detect low mana situations and wait
     - maybe even directly check your mana metric using whatever drinfomon or whatever
 =end
@@ -33,9 +35,11 @@ class BuffWatcher
     @buffs = {'Shadows' => {'min' => 1, 'power' => 100},
               'Seer\'s Sense' => {'min' => 15, 'power' => 80},
               'Minor Physical Protection' => {'min' => 1, 'power' => 100},
+              'Shadowling' => {'min' => 1, 'power' => 80},
               'Clear Vision' => {'min' => 1, 'power' => 100}}
 
     @tattoo_spell = 'Minor Physical Protection'
+    @shadowling_spell = 'Shadowling'
 
     # max amount to power spell from harness
     @max_spell_size = 30
@@ -65,6 +69,9 @@ class BuffWatcher
   end
   def tattoo_spell
     @tattoo_spell
+  end
+  def shadowling_spell
+    @shadowling_spell
   end
   def max_spell_size
     @max_spell_size
@@ -106,6 +113,10 @@ class BuffWatcher
     pause 20
     waitrt?
     fput "cast", "You gesture.", "You"
+    if spell == shadowling_spell
+      waitrt?
+      put "invoke shadowling"
+    end
   end
 
   def cambstate(camb, attribs)

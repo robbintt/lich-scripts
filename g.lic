@@ -11,12 +11,20 @@ include DRC  # wait_for_script_to_complete
 # store a hash of inputs and roomnumbers
 echo("Going to: #{variable}")
 
+if variable[0] == 'xbank'
+  wait_for_script_to_complete('go2', ['1900'])
+end
+
 if variable[0] == 'bin'
   wait_for_script_to_complete('go2', ['3353'])
 end
 
 if variable[0] == 'tent'
   wait_for_script_to_complete('go2', ['475'])
+end
+
+if variable[0] == 'empath'
+  wait_for_script_to_complete('go2', ['8720'])
 end
 
 if variable[0] == 'gryphons'

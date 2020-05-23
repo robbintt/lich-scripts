@@ -10,7 +10,7 @@ no_pause_all
 
 class RPASniper 
   def rpa_active?
-    rpa_check = fput "rpa check", "Your role-playing award information:"
+    rpa_check = fput "rpa check", "Your role-playing award information:", "You find it hard to concentrate on anything but getting across the bridge."
     rpa_state_str = matchtimeout 3, "Status:"
     # check rpa_exists? separately with that method
     if /Status: Active/.match(rpa_state_str)
@@ -23,7 +23,7 @@ class RPASniper
   end
     
   def rpa_exists?
-    rpa_check = fput "rpa check", "Your role-playing award information:"
+    rpa_check = fput "rpa check", "Your role-playing award information:", "You find it hard to concentrate on anything but getting across the bridge."
     rpa_exists_str = matchtimeout 3, "Status:"
     # check rpa_exists? separately with that method
     if rpa_exists_str
