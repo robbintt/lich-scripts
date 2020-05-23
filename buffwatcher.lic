@@ -32,7 +32,7 @@ class BuffWatcher
   def initialize
 
     # need to use full name of spell
-    @buffs = {'Shadowling' => {'min' => 1, 'power' => 80},
+    @buffs = {'Shadowling' => {'min' => 1, 'power' => 75},
               'Shadows' => {'min' => 1, 'power' => 100},
               'Seer\'s Sense' => {'min' => 15, 'power' => 80},
               'Minor Physical Protection' => {'min' => 1, 'power' => 100},
