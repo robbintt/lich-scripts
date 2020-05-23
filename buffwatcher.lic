@@ -32,7 +32,8 @@ class BuffWatcher
   def initialize
 
     # need to use full name of spell
-    @buffs = {'Shadows' => {'min' => 1, 'power' => 100},
+    @buffs = {'Shadowling' => {'min' => 1, 'power' => 80},
+              'Shadows' => {'min' => 1, 'power' => 100},
               'Seer\'s Sense' => {'min' => 15, 'power' => 80},
               'Minor Physical Protection' => {'min' => 1, 'power' => 100},
               'Shadowling' => {'min' => 1, 'power' => 80},
@@ -207,7 +208,7 @@ loop {
   buffwatcher.buffs.each do |buff, attrs|
     # seek to maximize camb usage and minimize harness usage
     # but stay within bounds for each
-    # have an option for using only existing camb charge
+    # have an option for using only existing camb charge?
     buffstate = buffwatcher.buff_spellstate(buff)
     max_from_harness = buffwatcher.max_spell_size
 
