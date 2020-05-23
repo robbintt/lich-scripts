@@ -36,7 +36,7 @@ class BuffWatcher
               'Shadows' => {'min' => 1, 'power' => 100},
               'Seer\'s Sense' => {'min' => 15, 'power' => 80},
               'Minor Physical Protection' => {'min' => 1, 'power' => 100},
-              'Shadowling' => {'min' => 15, 'power' => 85},
+              'Shadowling' => {'min' => 15, 'power' => 80},
               'Clear Vision' => {'min' => 1, 'power' => 100}}
 
     @tattoo_spell = 'Minor Physical Protection'
