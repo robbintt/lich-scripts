@@ -17,23 +17,14 @@
 no_kill_all
 no_pause_all
 
-# common, DRC: check if script is running thingy
-# spellmonitor: watch spells
-custom_require.call(%w[drinfomon common spellmonitor util_methods])
+pause 5 # race condition? apparently i need to let custom_require.call get loaded up?
+custom_require.call(%w[common util_methods drinfomon spellmonitor])
 
 include UtilMethods # from util_methods
 
-
-# original from hunting-buddy.lic
-#custom_require.call(%w[common common-arcana common-items common-travel drinfomon events spellmonitor equipmanager])
-
 class BuffWatcher
 
-  # from common: have only used one method from DRC so far, not sure what DRCA, DRCI, DRCT are...
   include DRC
-  #include DRCA
-  #include DRCI
-  #include DRCT
 
   def initialize
 
@@ -99,7 +90,6 @@ class BuffWatcher
   def unpause_other_scripts
     #resume the previously paused scripts
     Script.running.find_all { |s| s.paused? && !s.no_pause_all && $scripts_to_unpause.include?(s.name) }.each(&:unpause)
-    Flags.delete('burgle-footsteps')
   end
 
   def pause_other_scripts
@@ -232,7 +222,6 @@ end
 =end
 
 loop {
-  pause 120
   buffwatcher.buffs.each do |buff, attrs|
 
     # seek to maximize camb usage and minimize harness usage
@@ -316,4 +305,5 @@ loop {
       buffwatcher.unpause_other_scripts
     end
   end
+  pause 120
 }
