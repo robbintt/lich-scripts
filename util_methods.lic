@@ -8,7 +8,7 @@ module UtilMethods
   def justicearea?
     pause
     waitrt?
-    justicearea = fput "justice", @@justice_string, "You're fairly certain this area is lawless and unsafe.", "After assessing the area, you think local law enforcement keeps an eye on what's going on here.", "You", "you"
+    justicearea = fput "justice", "You're fairly certain this area is lawless and unsafe.", "After assessing the area, you think local law enforcement keeps an eye on what's going on here.", "You", "you"
     # This is defensive to avoid the law
     if justicearea != "You're fairly certain this area is lawless and unsafe."
       return true
