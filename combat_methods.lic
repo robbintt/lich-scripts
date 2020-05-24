@@ -93,6 +93,9 @@ module Combat
     pause
     waitrt?
     put "loot goods"
+    pause
+    waitrt?
+    put "fill my gem pouch with my hide sack"
   end
 
   def feint

@@ -75,8 +75,8 @@ loop {
     missile_etc
     getitem("fang arrow")
     stowitem("fang arrow")
-    getitem("fang arrow", "sack")
-    stowitem("fang arrow")
+    getitem("arrow", "hide sack")
+    stowitem("arrow")
 
     # skip if no learning happened
     if current_exp == DRSkill.getxp(current_skill)
