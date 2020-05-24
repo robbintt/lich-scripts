@@ -14,6 +14,9 @@
     - maybe even directly check your mana metric using whatever drinfomon or whatever
 =end
 
+no_kill_all
+no_pause_all
+
 # common, DRC: check if script is running thingy
 # spellmonitor: watch spells
 custom_require.call(%w[drinfomon common spellmonitor])
@@ -37,7 +40,7 @@ class BuffWatcher
               'Shadows' => {'min' => 1, 'power' => 100},
               'Seer\'s Sense' => {'min' => 15, 'power' => 80},
               'Minor Physical Protection' => {'min' => 1, 'power' => 100},
-              'Shadowling' => {'min' => 15, 'power' => 75},
+              'Shadowling' => {'min' => 15, 'power' => 70},
               'Clear Vision' => {'min' => 1, 'power' => 100}}
 
     @tattoo_spell = 'Minor Physical Protection'
@@ -124,6 +127,8 @@ class BuffWatcher
   def cast_buff(spell, mana)
     # dead simple, no dependencies
     # if it doesnt work, the nanny tries again later
+    waitrt?
+    fput "release spell", "You let", "You aren't", "You"
     waitrt?
     if spell == tattoo_spell
       fput "invoke tattoo"
@@ -222,7 +227,7 @@ end
 =end
 
 loop {
-  pause
+  pause 3
   buffwatcher.buffs.each do |buff, attrs|
     # seek to maximize camb usage and minimize harness usage
     # but stay within bounds for each
