@@ -88,6 +88,24 @@ class BuffWatcher
     @minutes_left_to_recast_at
   end
 
+
+
+  def unpause_other_scripts
+    #resume the previously paused scripts
+    Script.running.find_all { |s| s.paused? && !s.no_pause_all && $scripts_to_unpause.include?(s.name) }.each(&:unpause)
+    Flags.delete('burgle-footsteps')
+  end
+
+  def pause_other_scripts
+    #Pause all running scripts, that do not have no_pause_all flag set
+    #Do not use pause_all/unpause_all, as when resuming this could resume scripts that were not paused by this script
+    $scripts_to_unpause = []
+    Script.running.find_all { |s| !s.paused? && !s.no_pause_all && s.name != Script.self.name}.each do  |s|
+      s.pause
+      $scripts_to_unpause << s.name
+    end
+  end
+
   def nervestate
     if Wounds.nerves > 0
       echo "Wounds: #{Wounds.nerves}"
@@ -235,6 +253,9 @@ loop {
     # once i figure out how to compare it to something, pass the reset condition as a number - on a per-spell basis
     #   - 0 means reset only after spell wears off, 10 means reset when 10 roisaen left on spell, etc
     if !buffstate or buffstate < buffwatcher.minutes_left_to_recast_at
+
+      buffwatcher.pause_other_scripts
+
       if min_from_camb > 0
         # does this instance @variable work because its in a function sig in the instance?
         buffwatcher.cambstate(camb, @worn_cambrinth[camb])
@@ -273,6 +294,8 @@ loop {
         end
       end
       buffwatcher.cast_buff(buff, prep_size)
+
+      buffwatcher.unpause_other_scripts
     end
   end
 }
