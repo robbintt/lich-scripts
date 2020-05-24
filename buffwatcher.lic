@@ -19,7 +19,10 @@ no_pause_all
 
 # common, DRC: check if script is running thingy
 # spellmonitor: watch spells
-custom_require.call(%w[drinfomon common spellmonitor])
+custom_require.call(%w[drinfomon common spellmonitor util_methods])
+
+include UtilMethods # from util_methods
+
 
 # original from hunting-buddy.lic
 #custom_require.call(%w[common common-arcana common-items common-travel drinfomon events spellmonitor equipmanager])
@@ -128,6 +131,8 @@ class BuffWatcher
     # dead simple, no dependencies
     # if it doesnt work, the nanny tries again later
     waitrt?
+    fput "release sym", "You release", "But you haven't prepared a symbiosis!"
+    waitrt?
     fput "release spell", "You let", "You aren't", "You"
     waitrt?
     if spell == tattoo_spell
@@ -227,8 +232,9 @@ end
 =end
 
 loop {
-  pause 3
+  pause 120
   buffwatcher.buffs.each do |buff, attrs|
+
     # seek to maximize camb usage and minimize harness usage
     # but stay within bounds for each
     # have an option for using only existing camb charge?
@@ -258,6 +264,13 @@ loop {
     # once i figure out how to compare it to something, pass the reset condition as a number - on a per-spell basis
     #   - 0 means reset only after spell wears off, 10 means reset when 10 roisaen left on spell, etc
     if !buffstate or buffstate < buffwatcher.minutes_left_to_recast_at
+
+      # skip sorcery in a justice area
+      if buff == buffwatcher.tattoo_spell
+        if justicearea?
+          next
+        end
+      end
 
       buffwatcher.pause_other_scripts
 

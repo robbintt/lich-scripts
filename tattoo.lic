@@ -1,7 +1,9 @@
 
 # common, DRC: check if script is running thingy
 # spellmonitor: watch spells
-custom_require.call(%w[drinfomon common spellmonitor])
+
+custom_require.call(%w[drinfomon common spellmonitor util_methods])
+include UtilMethods # from util_methods
 
 class TattooTrainer
   # from common: have only used one method from DRC so far, not sure what DRCA, DRCI, DRCT are...
@@ -28,9 +30,6 @@ class TattooTrainer
   def camb
     @camb
   end
-  def justice_string
-    @justice_string
-  end
   def camb_charge
     @camb_charge
   end
@@ -48,7 +47,7 @@ class TattooTrainer
     pause 16 # finish spell prep
 
 
-    if justice
+    if !justicearea?
       pause
       waitrt?
       fput "cast", "You gesture.", "You"
@@ -61,21 +60,11 @@ class TattooTrainer
     end
 
   end
-  def justice
-    pause
-    waitrt?
-    @justicearea = fput "justice", justice_string, "You", "you"
-    if !@justicearea.include?(@justice_string)
-      return true
-    else
-      return false
-    end
-  end
 end
 
 tattootrainer = TattooTrainer.new
 
 # there was an abstraction for going over all the named skills in hunting-buddy
-while tattootrainer.justice and (DRSkill.getxp('Warding') < 34 and DRSkill.getxp('Sorcery') < 34)
+while !justicearea? and (DRSkill.getxp('Warding') < 34 and DRSkill.getxp('Sorcery') < 34)
   tattootrainer.cast
 end
