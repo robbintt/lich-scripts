@@ -27,6 +27,8 @@ loop {
     wait_for_script_to_complete('workorders', ['artificing'] )
   end
   power
+  wait_for_script_to_complete('astrology')
+  power
   wait_for_script_to_complete('go2', ['475'] ) # haven ranger tent
   wait_for_script_to_complete('tattoo')
   power
