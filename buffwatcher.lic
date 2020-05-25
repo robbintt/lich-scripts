@@ -87,21 +87,6 @@ class BuffWatcher
 
 
 
-  def unpause_other_scripts
-    #resume the previously paused scripts
-    Script.running.find_all { |s| s.paused? && !s.no_pause_all && $scripts_to_unpause.include?(s.name) }.each(&:unpause)
-  end
-
-  def pause_other_scripts
-    #Pause all running scripts, that do not have no_pause_all flag set
-    #Do not use pause_all/unpause_all, as when resuming this could resume scripts that were not paused by this script
-    $scripts_to_unpause = []
-    Script.running.find_all { |s| !s.paused? && !s.no_pause_all && s.name != Script.self.name}.each do  |s|
-      s.pause
-      $scripts_to_unpause << s.name
-    end
-  end
-
   def nervestate
     if Wounds.nerves > 0
       echo "Wounds: #{Wounds.nerves}"
