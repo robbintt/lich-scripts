@@ -142,7 +142,8 @@ class BuffWatcher
   def cambstate(camb, attribs)
     # this doesn't handle cases where skill is not sufficient
     waitrt?
-    focus = fput "focus #{camb}", "You focus"
+    # bomb out if you can't focus?
+    focus = fput "focus #{camb}", "You focus", "You find it hard to concentrate on anything but getting across the bridge."
     cambstate_string = matchtimeout 5, "the cambrinth #{camb}"
     lines = /You clearly perceive ([0-9]+) line/.match(cambstate_string)[1]
     # catch empty camb
