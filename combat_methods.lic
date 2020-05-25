@@ -98,6 +98,19 @@ module Combat
     put "fill my gem pouch with my hide sack"
   end
 
+  def cleanupall
+    pause
+    waitrt?
+    put "skin"
+
+    pause
+    waitrt?
+    put "loot all"
+    pause
+    waitrt?
+    put "fill my gem pouch with my hide sack"
+  end
+
   def feint
     pause
     waitrt?
@@ -201,6 +214,28 @@ module Combat
 
     circle
     circle
+
+    if result == "There is nothing else to face!"
+      return
+    end
+
+    pause # 1 sec
+    waitrt?
+    fput "cast", "You"
+  end
+
+  def kill
+    pause
+    waitrt?
+    fput "target pd 18", "attunement", "already"
+
+    pause # 1 sec
+    waitrt?
+    # how to abstract this with the method??
+    result = fput "feint", "You", "There is nothing else to face!" # 4 sec
+
+    feint 
+    feint 
 
     if result == "There is nothing else to face!"
       return

@@ -4,6 +4,49 @@ custom_require.call(%w[common])
 
 module UtilMethods
 
+  def stowheld
+    while @@held_text != "Both of your hands are empty."
+      pause
+      waitrt?
+      fput "stow right", "you", "Stow what?"
+      pause
+      waitrt?
+      fput "stow left", "you", "Stow what?"
+      pause
+      waitrt?
+      @@held_text = fput "inv held", "Both of your hands are empty.", "You", "you"
+    end
+  end
+
+  def getmyitem(item)
+    pause
+    waitrt?
+    fput "get my #{item}", "You", "What were you referring to?"
+  end
+
+  def getitem(item, container="")
+    if container == ""
+      pause
+      waitrt?
+      fput "get #{item}", "You", "What were you referring to?"
+    else
+      pause
+      waitrt?
+      fput "get #{item} from #{container}", "You", "What were you referring to?"
+    end
+  end
+
+  def stowmyitem(item)
+    pause
+    waitrt?
+    fput "stow my #{item}", "You", "Stow what?"
+  end
+
+  def stowitem(item)
+    pause
+    waitrt?
+    fput "stow my #{item}", "You", "Stow what?"
+  end
 
   def justicearea?
     pause

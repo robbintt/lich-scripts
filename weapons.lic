@@ -1,8 +1,9 @@
-custom_require.call(%w[drinfomon common combat_methods weapon_swap])
+custom_require.call(%w[drinfomon common util_methods combat_methods weapon_swap])
 
 # mandatory for many things including hide?
 include DRC
 
+include UtilMethods
 include WeaponSwap
 include Combat
 
