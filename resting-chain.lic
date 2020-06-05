@@ -32,8 +32,8 @@ loop {
   wait_for_script_to_complete('go2', ['475'] ) # haven ranger tent
   wait_for_script_to_complete('tattoo')
   power
-  wait_for_script_to_complete('locks')
-  power
+  #wait_for_script_to_complete('locks')
+  #power
   wait_for_script_to_complete('rocks')
   power
   wait_for_script_to_complete('study')

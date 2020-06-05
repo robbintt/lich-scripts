@@ -95,7 +95,7 @@ module Combat
     put "loot goods"
     pause
     waitrt?
-    put "fill my gem pouch with my hide sack"
+    put "fill my red pouch with my hide sack"
   end
 
   def cleanupall
@@ -108,7 +108,13 @@ module Combat
     put "loot all"
     pause
     waitrt?
-    put "fill my gem pouch with my hide sack"
+    put "fill my red pouch with my hide sack"
+  end
+
+  def attack
+    pause
+    waitrt?
+    put "attack"
   end
 
   def feint
@@ -117,10 +123,30 @@ module Combat
     put "feint"
   end
 
+  def blindside
+    pause
+    waitrt?
+    put "blindside"
+  end
+
+
   def feint_left
     pause
     waitrt?
     put "feint left"
+  end
+
+  def ambush_blindside
+
+    hide
+
+    if hiding?
+      advance
+    end
+
+    if hiding?
+      blindside
+    end
   end
 
   def ambush_feint
