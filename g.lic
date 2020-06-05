@@ -74,3 +74,15 @@ end
 if variable[0] == 'blades'
   wait_for_script_to_complete('go2', ['11507'])
 end
+
+# Haven Checkpoints
+
+if variable[0] == 'havenhome'
+  wait_for_script_to_complete('go2', ['13793'])
+end
+
+if variable[0] == 'crate'
+  wait_for_script_to_complete('go2', ['365'])
+end
+
+
