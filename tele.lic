@@ -1,6 +1,9 @@
 loop {
 
   body = variable[0]
+  #container = "telescope case"
+  telescope = "satinwood telescope"
+  container = "backpack"
 
   echo body
   if body.strip.empty?
@@ -11,15 +14,15 @@ loop {
 
   pause
   waitrt?
-  fput "open my telescope case", "You open your", "That is already open."
+  fput "open my #{container}", "You open your", "That is already open."
 
   pause
   waitrt?
-  fput "get my telescope from my telescope case", "You get"
+  fput "get my #{telescope} from my #{container}", "You get"
 
   pause
   waitrt?
-  fput "open my telescope", "You extend your", "You try, but the telescope seems as extended as it will ever be."
+  fput "open my #{telescope}", "You extend your", "You try, but the telescope seems as extended as it will ever be."
 
   pause
   waitrt?
@@ -48,25 +51,25 @@ loop {
 
   pause
   waitrt?
-  fput "close my telescope", "You collapse your", "You try, but the telescope won't collapse any further."
+  fput "close my #{telescope}", "You collapse your", "You try, but the telescope won't collapse any further."
 
   pause
   waitrt?
-  fput "put my telescope in my telescope case", "You put your", "What were you referring to?"
+  fput "put my #{telescope} in my #{container}", "You put your", "What were you referring to?"
 
   # for human validation, telescope should be inside the case
   pause
   waitrt?
-  put "look in my telescope case"
+  put "look in my #{container}"
 
   pause
   waitrt?
-  fput "close my telescope case", "You close your", "That is already closed."
+  fput "close my #{container}", "You close your", "That is already closed."
 
   # for human validation, should be closed
   pause
   waitrt?
-  put "look in my telescope case"
+  put "look in my #{container}"
 
   pause
   waitrt?
