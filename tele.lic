@@ -1,14 +1,17 @@
-
-
 loop {
 
   body = variable[0]
+
+  echo body
+  if body.strip.empty?
+    break
+  end 
 
   # TODO if held, empty hands unless telescope only
 
   pause
   waitrt?
-  fput "open my telescope case", "You open your"
+  fput "open my telescope case", "You open your", "That is already open."
 
   pause
   waitrt?
@@ -16,7 +19,7 @@ loop {
 
   pause
   waitrt?
-  fput "open my telescope", "You extend your"
+  fput "open my telescope", "You extend your", "You try, but the telescope seems as extended as it will ever be."
 
   pause
   waitrt?
@@ -70,7 +73,8 @@ loop {
   put "predict state all"
 
   
+  waitfor "You feel you have sufficiently pondered your latest observation."
   # temp while adding more to process
-  break
+  #break
 
 }
