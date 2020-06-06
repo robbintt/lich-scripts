@@ -18,6 +18,10 @@ module UtilMethods
     end
   end
 
+  def stowfeet
+    fput "stow feet", "you", "Stow what?"
+  end
+
   def getmyitem(item)
     pause
     waitrt?
