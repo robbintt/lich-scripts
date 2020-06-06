@@ -48,7 +48,7 @@ loop {
 
   pause
   waitrt?
-  fput "close my telescope", "You collapse your", "That is already closed."
+  fput "close my telescope", "You collapse your", "You try, but the telescope won't collapse any further."
 
   pause
   waitrt?
@@ -61,7 +61,7 @@ loop {
 
   pause
   waitrt?
-  fput "close my telescope case", "You close your"
+  fput "close my telescope case", "You close your", "That is already closed."
 
   # for human validation, should be closed
   pause
