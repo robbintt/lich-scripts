@@ -1,0 +1,76 @@
+
+
+loop {
+
+  body = variable[0]
+
+  # TODO if held, empty hands unless telescope only
+
+  pause
+  waitrt?
+  fput "open my telescope case", "You open your"
+
+  pause
+  waitrt?
+  fput "get my telescope from my telescope case", "You get"
+
+  pause
+  waitrt?
+  fput "open my telescope", "You extend your"
+
+  pause
+  waitrt?
+  center_string = fput "center my tele on #{body}", "You"
+  body_up_check = matchtimeout 3, "turns up fruitless."
+
+  if body_up_check.include? "turns up fruitless."
+    exit
+  end
+
+  # focus the telescope
+  loop {
+    pause
+    waitrt?
+    focus_string = fput "focus my tele", "You adjust", "You think", "You"
+    fully_focused_check = matchtimeout 3, "You think you've focused"
+
+    if fully_focused_check.include? "You think you've focused"
+      break
+    end
+  }
+
+  pause
+  waitrt?
+  fput "peer my tele", "The", "clouds", "You peer aimlessly"
+
+  pause
+  waitrt?
+  fput "close my telescope", "You collapse your"
+
+  pause
+  waitrt?
+  fput "put my telescope in my telescope case", "You put your"
+
+  # for human validation, telescope should be inside the case
+  pause
+  waitrt?
+  put "look in my telescope case"
+
+  pause
+  waitrt?
+  fput "close my telescope case", "You close your"
+
+  # for human validation, should be closed
+  pause
+  waitrt?
+  put "look in my telescope case"
+
+  pause
+  waitrt?
+  put "predict state all"
+
+  
+  # temp while adding more to process
+  break
+
+}
