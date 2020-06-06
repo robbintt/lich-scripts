@@ -48,11 +48,11 @@ loop {
 
   pause
   waitrt?
-  fput "close my telescope", "You collapse your"
+  fput "close my telescope", "You collapse your", "That is already closed."
 
   pause
   waitrt?
-  fput "put my telescope in my telescope case", "You put your"
+  fput "put my telescope in my telescope case", "You put your", "What were you referring to?"
 
   # for human validation, telescope should be inside the case
   pause
