@@ -16,8 +16,9 @@ hometown: Riverhaven
 #any container that may contain training items
 storage_containers:
 - backpack
-- lootsack
+- scavenger belt
 - thigh.bag
+- leather belt
 
 #skills to train while in town
 crossing_training:
@@ -252,7 +253,7 @@ hunting_buddies:
 #art is highly effective for younglings in Crossing
 #remove art for necro or when changing hometowns away from Crossing
 appraisal_training:
-- art  
+#- art  
 - pouches
 - gear
 
@@ -298,8 +299,8 @@ skinning:
 # use_stealth_ranged: true, used to train stealth using ranged attacks
 dont_stalk: true
 ambush: true
-stealth_attack_aimed_action: snipe
-backstab: Small Edged
+#stealth_attack_aimed_action: snipe
+#backstab: Small Edged
 use_stealth_attacks: true
 use_stealth_ranged: true
 

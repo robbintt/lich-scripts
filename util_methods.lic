@@ -5,6 +5,7 @@ custom_require.call(%w[common])
 module UtilMethods
 
   def stowheld
+    @@held_text = ""
     while @@held_text != "Both of your hands are empty."
       pause
       waitrt?
