@@ -2,8 +2,7 @@
 
 hometown: Riverhaven
 
-storage_containers: ["old backpack", "scavenger belt"]
-picking_box_source: "scavenger belt"
+picking_box_source: "old backpack"
 burgle_settings:
   room: 13828
   entry_type: lockpick
@@ -20,7 +19,7 @@ waggle_sets:
 
 gear:
 - :name: leathers
-  :adjective: demonscale
+  :adjective: coarse
   :is_leather: true
   :hinders_lockpicking: true
   :is_worn: true
@@ -58,7 +57,7 @@ gear:
 gear_sets:
   standard:
   - demonscale shield
-  - demonscale leathers
+  - coarse leathers
   - plate gauntlet
   - ring helm 
   - scale mask
