@@ -147,10 +147,11 @@ hunting_info:
 training_manager_hunting_priority: false
 # list of skills that will trigger a hunt loop if they go below the lower_limit. THIS MEANS ONLY COMBAT-SKILLS SHOULD BE ON HERE
 training_manager_priority_skills:
-- Small Edged
-- Sling
+#- Small Edged
+#- Sling
 - Shield
 - Parry
+#- Parry
 #- Light Thrown
 #- Parry Ability
 
@@ -158,9 +159,9 @@ training_manager_priority_skills:
 #use ranged if you use aiming_trainables to get the max number of skills moving quickly
 # Note: Turn off if ranged are outpacing the others!
 priority_weapons:
-  - Crossbow
-  - Bow
-  - Slings
+#  - Crossbow
+#  - Bow
+#  - Slings
 
 weapon_training:
   #ranged/OffHand
