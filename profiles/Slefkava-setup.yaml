@@ -1,11 +1,14 @@
----
+
 
 hometown: Riverhaven
+
+storage_containers: ["old backpack", "scavenger belt"]
+picking_box_source: "scavenger belt"
 burgle_settings:
   room: 13828
   entry_type: lockpick
   max_search_count: 1
-  loot_container: old backpack
+  loot_container: "old backpack"
   safe_mode: true
 waggle_sets:
   burgle:
@@ -15,6 +18,51 @@ waggle_sets:
     - Focus
 
 
+gear:
+- :name: leathers
+  :adjective: demonscale
+  :is_leather: true
+  :hinders_lockpicking: true
+  :is_worn: true
+- :name: helm 
+  :adjective: ring
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :name: gauntlets
+  :adjective: plate
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :name: mask
+  :adjective: scale
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+- :name: shield
+  :adjective: demonscale
+  :is_leather: false
+  :hinders_lockpicking: true
+  :is_worn: true
+  :swappable: false
+- :name: gladius
+  :adjective:
+  :is_leather: false
+  :is_worn: false
+  :wield: true
+- :name: sling
+  :adjective: leather
+  :is_leather: true
+  :is_worn: false
+
+gear_sets:
+  standard:
+  - demonscale shield
+  - demonscale leathers
+  - plate gauntlet
+  - ring helm 
+  - scale mask
+  swimming:
 
 
 empty_values:
@@ -29,7 +77,6 @@ empty_values:
   necromancer_healing: {}
   zombie: {}
   empath_healing: {}
-  storage_containers: []
   summoned_weapons: []
   stances: {}
   aim_fillers: []
