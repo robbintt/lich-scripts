@@ -21,15 +21,18 @@ end
 loop {
 
   power
+  wait_for_script_to_complete('astrology')
+  power
+  wait_for_script_to_complete('go2', ['475'] ) # haven ranger tent
+  power
   wait_for_script_to_complete('sym')
   while DRSkill.getxp('Enchanting') < 30
     power
     wait_for_script_to_complete('workorders', ['artificing'] )
   end
-  power
-  wait_for_script_to_complete('astrology')
-  power
+  # go after artificing
   wait_for_script_to_complete('go2', ['475'] ) # haven ranger tent
+  power
   wait_for_script_to_complete('tattoo')
   power
   #wait_for_script_to_complete('locks')

@@ -30,13 +30,14 @@ crossing_training:
 - Athletics
 - Outdoorsmanship
 - Perception
+- Arcana
 
 
 train_with_burgle: true
 burgle_settings:
   room: 13828
   entry_type: cycle
-  max_search_count: 1
+  max_search_count: 2
   loot_container: "old backpack"
   safe_mode: true
 waggle_sets:
@@ -126,13 +127,17 @@ hunting_info:
   # - louts
   # - goblins
 - :zone:
-  - wildland_goblin_riverhaven
+  #- wildland_goblin_riverhaven
+  #- arbelog_ram_bear_riverhaven
+  - reavers
   #number of minutes to hunt if stop_on doesn't trigger first
-  :duration: 60
+  :duration: 20
   #will exit hunting if all of the skills lock - can list one or twenty-one skills
   stop_on:
-  - Brawling
-  - Small Edged
+  - Shield
+  #- Parry
+  #- Small Edged
+  #- Sling
   #conditions for hunting
   args:
   #dance threshold, will dance if creatures in room are equal or less than the number
@@ -171,8 +176,8 @@ weapon_training:
   #Bow: nisha shortbow
   Brawling: ''
   Small Edged: gladius
+  #Slings: leather sling
   #Small Blunt: belaying pin
-  Slings: leather sling
   #Main hand only
   #Large Blunt: slender sledgehammer
   #Large Edged: agonite spatha
@@ -224,7 +229,7 @@ use_overrides_for_aiming_trainables: false
 
 #Always sets this skill to highest defense score, cycling the others
 #Barbarians are weapons primary, prioritizing Parry Ability will save your life
-priority_defense: Parry Ability
+priority_defense: Evasion
 
 #abilities to use during combat - avoid too much retreating
 #Hunt trains perception via HUNT command
@@ -240,7 +245,7 @@ training_abilities:
   Analyze: 120     #Teaches tactics
 
 #skill to teach your hunting_buddies
-combat_teaching_skill: Bow  
+combat_teaching_skill: Sling
 
 #list of friend names you wish to hunt with if you see them in a room
 hunting_buddies:
@@ -276,7 +281,7 @@ footwear:
 worn_instrument: zills
 
 #search for classes to listen to in your safe-room
-listen: true
+listen: false
 
 #compendium/textbook for first-aid
 #false for a compendium
@@ -302,8 +307,8 @@ dont_stalk: true
 ambush: true
 #stealth_attack_aimed_action: snipe
 #backstab: Small Edged
-use_stealth_attacks: true
-use_stealth_ranged: true
+use_stealth_attacks: false
+use_stealth_ranged: false
 
 #early skill levels/newly required khri require kneeling to activate
 kneel_khri: false
@@ -415,9 +420,9 @@ harvest_traps: true
 #live box source
 picking_box_source: scavenger belt
 # Keep this empty to drop too-hard boxes on the ground
-picking_box_storage: old backpack
+picking_box_storage: thigh bag
 #pet box source
-picking_pet_box_source: thigh bag
+picking_pet_box_source: old backpack
 #number of boxes to make with ;pick pets
 pet_boxes_on_hand: 5
 
