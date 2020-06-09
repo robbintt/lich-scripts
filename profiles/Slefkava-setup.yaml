@@ -75,8 +75,8 @@ gear:
   :hinders_lockpicking: true
   :is_worn: true
   :swappable: false
-- :name: gladius
-  :adjective:
+- :name: scimitar
+  :adjective: steel
   :is_leather: false
   :is_worn: false
   :wield: true
@@ -84,13 +84,18 @@ gear:
   :adjective: leather
   :is_leather: true
   :is_worn: false
+- :name: locket
+  :adjective: filigree
+  :hinders_lockpicking: false
+  :is_leather: false
+  :is_worn: false
 
 gear_sets:
   standard:
   - demonscale shield
   - coarse leathers
   - plate gauntlet
-  - ring helm 
+  - ring helm
   - scale mask
   swimming:
 
@@ -175,7 +180,7 @@ weapon_training:
   #Heavy Thrown: diamondique hhr'ata
   #Bow: nisha shortbow
   Brawling: ''
-  Small Edged: gladius
+  Small Edged: scimitar
   #Slings: leather sling
   #Small Blunt: belaying pin
   #Main hand only
