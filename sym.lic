@@ -19,7 +19,7 @@ class MagicTrainer
     put "prep symbiosis"
     pause
     waitrt?
-    put "prep pg 26"
+    put "prep pg 28"
     waitfor "fully prepared to cast"
     pause 5
     fput "cast", "You gesture", "You don't have a spell prepared!"
@@ -34,7 +34,7 @@ class MagicTrainer
     put "prep symbiosis"
     pause
     waitrt?
-    put "prep aus 26"
+    put "prep aus 28"
     waitfor "fully prepared to cast"
     pause 5
     fput "cast", "You gesture", "You don't have a spell prepared!"

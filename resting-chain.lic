@@ -21,17 +21,17 @@ end
 loop {
 
   power
+  wait_for_script_to_complete('sym')
+  power
   wait_for_script_to_complete('go2', ['475'] ) # haven ranger tent
+  power
+  wait_for_script_to_complete('tattoo')
   power
   wait_for_script_to_complete('astrology')
   power
   wait_for_script_to_complete('go2', ['3353'] ) # lang bin for climb
   power
   wait_for_script_to_complete('climb')
-  power
-  wait_for_script_to_complete('sym')
-  power
-  wait_for_script_to_complete('tattoo')
   power
   wait_for_script_to_complete('go2', ['475'] ) # haven ranger tent
   while DRSkill.getxp('Enchanting') < 30

@@ -8,7 +8,7 @@ include Combat
 
 def attack
   while !mobs?
-    pause 2
+    pause 3
   end
   advance
   feint
@@ -19,7 +19,7 @@ end
 
 def offhand
   while !mobs?
-    pause 2
+    pause 3
   end
   advance
   feint_left
@@ -87,7 +87,7 @@ loop {
   end
   stowmyitem("bar mace")
 
-  getmyitem("skefne")
+  getmyitem("javelin")
   current_skill = 'Polearms'
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
@@ -98,7 +98,7 @@ loop {
       break
     end
   end
-  stowmyitem("skefne")
+  stowmyitem("javelin")
 
   getmyitem("nightstick")
   current_skill = 'Staves'
@@ -138,4 +138,17 @@ loop {
     end
   end
   stowmyitem("club")
+
+  getmyitem("thrusting blade")
+  current_skill = 'Small Edged'
+  current_exp = DRSkill.getxp(current_skill)
+  while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
+    attack
+
+    # skip if no learning happened
+    if current_exp == DRSkill.getxp(current_skill)
+      break
+    end
+  end
+  stowmyitem("thrusting blade")
 }

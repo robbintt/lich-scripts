@@ -1,9 +1,9 @@
 loop {
 
   body = variable[0]
-  #container = "telescope case"
-  telescope = "satinwood telescope"
-  container = "backpack"
+  telescope = "clockwork telescope"
+  container = "telescope case"
+  #container = "backpack"
 
   echo body
   if body.strip.empty?

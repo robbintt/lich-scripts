@@ -10,15 +10,17 @@
 # This file can be used with ;training-manager or ;t2.  The T2 specifics are at the very bottom.
 
 
-hometown: Riverhaven
+hometown: Crossing
 
+default_stance: 100 0 80
+forage_item: rock
+dump_junk: true
+dump_item_count: 10
 
 #any container that may contain training items
 storage_containers:
 - backpack
-- scavenger belt
-- thigh.bag
-- leather belt
+- haversack
 
 #skills to train while in town
 crossing_training:
@@ -35,17 +37,11 @@ crossing_training:
 
 train_with_burgle: true
 burgle_settings:
-  room: 13828
+  room: 851
   entry_type: cycle
-  max_search_count: 2
-  loot_container: "old backpack"
+  max_search_count: 1
+  loot_container: "backpack"
   safe_mode: true
-waggle_sets:
-  burgle:
-    - Darken
-    - Dampen
-    - Hasten
-    - Focus
 
 
 gear:
@@ -54,7 +50,7 @@ gear:
   :is_leather: true
   :hinders_lockpicking: true
   :is_worn: true
-- :name: helm 
+- :name: helm
   :adjective: ring
   :is_leather: false
   :hinders_lockpicking: true
@@ -69,14 +65,20 @@ gear:
   :is_leather: false
   :hinders_lockpicking: true
   :is_worn: true
-- :name: shield
-  :adjective: demonscale
+- :name: sipar
+  :adjective: round
   :is_leather: false
   :hinders_lockpicking: true
   :is_worn: true
   :swappable: false
-- :name: scimitar
-  :adjective: steel
+- :name: stick
+  :adjective: parry
+  :is_leather: false
+  :hinders_lockpicking: false
+  :is_worn: true
+  :swappable: false
+- :name: blade
+  :adjective: thrusting
   :is_leather: false
   :is_worn: false
   :wield: true
@@ -92,7 +94,7 @@ gear:
 
 gear_sets:
   standard:
-  - demonscale shield
+  - round sipar
   - coarse leathers
   - plate gauntlet
   - ring helm
@@ -101,11 +103,8 @@ gear_sets:
 
 
 #all the settings to make you do allll the stuff in your safe room versus random rooms around town
-safe_room: 365
-outdoor_room: 365
-engineering_room: 365
-outfitting_room: 365
-enchanting_room: 365
+safe_room: 19162
+outdoor_room: 19162
 
 #summon the janitor in combat or in safe-room when too cluttered
 dump_junk: true
@@ -117,9 +116,6 @@ stop_hunting_if_bleeding: true
 combat_trainer_action_count: 10
 #or number of mindstates - whichever happens first
 combat_trainer_target_increment: 3
-
-#default stance when entering combat-trainer
-#default_stance: # # #
 
 #where and how long to hunt
 hunting_info:
@@ -135,7 +131,7 @@ hunting_info:
   #- wildland_goblin_riverhaven
   #- arbelog_ram_bear_riverhaven
   #- reavers
-  - rock_trolls
+  - rats
   #number of minutes to hunt if stop_on doesn't trigger first
   :duration: 20
   #will exit hunting if all of the skills lock - can list one or twenty-one skills
@@ -155,13 +151,12 @@ hunting_info:
   #- Skill1
 
 # True means perform a hunt right away on startup. False means wait until a round of town-training is done.
-training_manager_hunting_priority: false
+training_manager_hunting_priority: true
 # list of skills that will trigger a hunt loop if they go below the lower_limit. THIS MEANS ONLY COMBAT-SKILLS SHOULD BE ON HERE
 training_manager_priority_skills:
 #- Small Edged
 #- Sling
 - Shield
-- Parry
 #- Parry
 #- Light Thrown
 #- Parry Ability
@@ -181,7 +176,7 @@ weapon_training:
   #Heavy Thrown: diamondique hhr'ata
   #Bow: nisha shortbow
   Brawling: ''
-  Small Edged: scimitar
+  Small Edged: thrusting blade
   #Slings: leather sling
   #Small Blunt: belaying pin
   #Main hand only
@@ -212,7 +207,7 @@ aiming_trainables:
 use_weak_attacks: false
 
 #uses for attacking from stealth
-stealth_attack_aimed_action: poach
+#stealth_attack_aimed_action: poach
 
 #hides before attacking
 use_stealth_attacks: false
@@ -235,7 +230,7 @@ use_overrides_for_aiming_trainables: false
 
 #Always sets this skill to highest defense score, cycling the others
 #Barbarians are weapons primary, prioritizing Parry Ability will save your life
-priority_defense: Evasion
+priority_defense: Shield
 
 #abilities to use during combat - avoid too much retreating
 #Hunt trains perception via HUNT command
@@ -245,7 +240,7 @@ priority_defense: Evasion
 #Locks: requires pet boxes and the locksmithing section completed
 #Teach: tries to re-teach your chosen class to your hunting_buddies
 training_abilities:
-  Hunt: 60 
+  Hunt: 60
   Collect: 120     #adds a lot of RT
   App Quick: 30
   Analyze: 120     #Teaches tactics
@@ -287,7 +282,7 @@ footwear:
 worn_instrument: zills
 
 #search for classes to listen to in your safe-room
-listen: false
+listen: true
 
 #compendium/textbook for first-aid
 #false for a compendium
@@ -319,19 +314,6 @@ use_stealth_ranged: false
 #early skill levels/newly required khri require kneeling to activate
 kneel_khri: false
 
-#maintain spells in combat
-buff_nonspells:
-  khri:
-  #- Prowess # Helps with uphunting
-  #- Sagacity # Helps with uphunting
-  #- Elusion
-  #- Terrify
-  - Focus
-  - Avoidance
-  - Hasten
-  - Darken
-  - Dampen
-  #- Strike
 
 #######################################################################################################
 
@@ -379,9 +361,9 @@ loot_specials:
 #   bag: haversack
 
 #where to store full loot pouches
-full_pouch_container: "thigh bag"
+full_pouch_container: "backpack"
 #separate location for spare empty pouches
-spare_gem_pouch_container: "old backpack"
+spare_gem_pouch_container: "haversack"
 
 #true to save pouches for trader to sell for better profit
 # false to sell yourself
@@ -416,7 +398,7 @@ restock:
   #   quantity: 30
 
 # Lockpicking settings - follow it carefully to avoid springing traps!
-stop_pick_on_mindlock: true  
+stop_pick_on_mindlock: true
 pick_blind: false
 use_lockpick_ring: true
 skip_lockpick_ring_refill: true
@@ -424,9 +406,9 @@ lockpick_container: lockpick ring
 lockpick_type: stout  #use 'stout iron' if in Shard
 harvest_traps: true
 #live box source
-picking_box_source: scavenger belt
+picking_box_source: backpack
 # Keep this empty to drop too-hard boxes on the ground
-picking_box_storage: thigh bag
+picking_box_storage: 
 #pet box source
 picking_pet_box_source: old backpack
 #number of boxes to make with ;pick pets
@@ -441,7 +423,7 @@ train_workorders:
 - Shaping
 
 #where to put all your crafting junk
-crafting_container: old backpack
+crafting_container: backpack
 
 #toolbelts are supported
 # engineering_belt:
@@ -625,14 +607,14 @@ sanowret_no_use_scripts:
 
 # don't say anything when entering a hunting room
 empty_hunting_room_messages:
-- /   
+- "Hi"
 
 #list of hunting files to use
 hunting_file_list:
   - setup
   # - back
 
-#### T2 Setup
+### T2 Setup
 training_list:
 - skill:
   - Athletics

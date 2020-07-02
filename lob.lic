@@ -3,9 +3,9 @@ include Combat
 include UtilMethods
 
 loop {
-  stowmyitem("blade")
-  stowmyitem("blade")
-  put "get blade"
+  stowmyitem("club")
+  stowmyitem("club")
+  put "get club"
   lob
   stowfeet
   lob

@@ -1,0 +1,14 @@
+# drain for a specific amount of time before exiting
+minutes = 60
+
+while minutes > 0
+
+  minutes = minutes - 1
+  put "exp"
+  pause
+  put "echo *** Draining for #{minutes} more minutes."
+  pause 60
+
+end
+
+put "exit"

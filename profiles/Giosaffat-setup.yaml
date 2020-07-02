@@ -16,7 +16,7 @@ astrology_training:
   - rtr
 astral_plane_training:
   train_destination: theren
-  train_source: riverhaven
+  train_source: crossing
 have_telescope: true
 telescope_storage:
   container: telescope case

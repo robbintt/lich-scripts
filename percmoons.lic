@@ -19,6 +19,8 @@ class PercMoons
       waitrt?
       # let this fail out, it runs constantly
       put "perc moons"
+      pause
+      waitrt?
       unpause_other_scripts
     end
   end

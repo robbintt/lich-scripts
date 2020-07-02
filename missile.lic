@@ -23,7 +23,7 @@ def missile_etc
   cleanup
   # this will face next, which is important for aiming
   while !mobs?
-    pause 2
+    pause 3
   end
 end
 
@@ -34,21 +34,21 @@ loop {
 
   stowheld
 
-  getmyitem("skefne")
+  getmyitem("javelin")
   current_skill = 'Heavy Thrown'
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
     lob_etc
-    getmyitem("skefne")
+    getmyitem("javelin")
     lob_etc
-    getmyitem("skefne")
+    getmyitem("javelin")
 
     # skip if no learning happened
     if current_exp == DRSkill.getxp(current_skill)
       break
     end
   end
-  stowmyitem("skefne")
+  stowmyitem("javelin")
 
   getmyitem("club")
   current_skill = 'Light Thrown'
@@ -87,7 +87,7 @@ loop {
   stowitem("fang arrow")
   stowmyitem("shortbow")
 
-  getmyitem("stonebow")
+  getmyitem("pelletbow")
   current_skill = 'Crossbow'
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
@@ -102,9 +102,9 @@ loop {
   end
   unload
   stowmyitem("stone shard")
-  stowmyitem("stonebow")
+  stowmyitem("pelletbow")
 
-  getmyitem("slingshot")
+  getmyitem("sling")
   current_skill = 'Slings'
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < 33 ? current_exp + exp_increment : 33)
@@ -119,5 +119,5 @@ loop {
   end
   unload
   stowmyitem("stone shard")
-  stowmyitem("slingshot")
+  stowmyitem("sling")
 }
