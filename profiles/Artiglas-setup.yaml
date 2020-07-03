@@ -26,13 +26,17 @@ storage_containers:
 crossing_training:
 - Locksmithing
 - Scholarship
-#- Stealing #(not implemented yet?)
 - Appraisal
-- First Aid
+  #- First Aid
 - Athletics
-- Outdoorsmanship
-- Perception
+  #- Outdoorsmanship
+  #- Perception
 - Arcana
+- Theurgy
+- warding
+- primary magic
+- augmentation
+- utility
 
 
 train_with_burgle: true
@@ -90,7 +94,7 @@ gear:
   :adjective: filigree
   :hinders_lockpicking: false
   :is_leather: false
-  :is_worn: false
+  :is_worn: true
 
 gear_sets:
   standard:
@@ -99,7 +103,7 @@ gear_sets:
   - plate gauntlet
   - ring helm
   - scale mask
-  swimming:
+#  swimming:
 
 
 #all the settings to make you do allll the stuff in your safe room versus random rooms around town
@@ -117,6 +121,48 @@ combat_trainer_action_count: 10
 #or number of mindstates - whichever happens first
 combat_trainer_target_increment: 3
 
+
+theurgy_whitelist:
+# Tithe 5 silver at the local almsbox.  Requres tithe: true
+- tithe
+# Study the wall in the Crossing temple.
+- study_wall
+# Meditate at the Crossing guild refectory
+- refectory
+# Carve a prayer bead.
+- carve_bead
+# Find and plant a sirese seed.
+- sirese_seed
+# Take a holy bath, you savage.
+- bathe
+# Pray on a prayer badge.
+- pray_badge
+# Medidate on a carved prayer bead.  Marvel at the special effects.
+- meditate_bead
+# Dance in front of an altar.
+- dance
+# Wave incense at an altar
+- incense
+# Pour wine on an altar.
+- wine
+# Recite the same prayer as everyone else in front of an altar.
+- recite_prayer
+# Clean an altar with holy water.
+- clean_altar
+# Clean your anloral pin.
+- clean_anloral
+# Read a prayer parchment in a populated place.
+- embarass_myself
+theurgy_blacklist:
+# On second thought, let's not.
+- embarass_myself
+# theurgy_exp_threshold: 0 would run all possible things.
+theurgy_exp_threshold: 33
+theurgy_bead_carving_tool:
+theurgy_use_prayer_mat: false
+theurgy_prayer_mat_room:
+pray_to_chadatru: false
+
 #where and how long to hunt
 hunting_info:
   #can find zones with notes in base-hunting.yaml in the data file
@@ -131,7 +177,7 @@ hunting_info:
   #- wildland_goblin_riverhaven
   #- arbelog_ram_bear_riverhaven
   #- reavers
-  - rats
+  #- rats
   #number of minutes to hunt if stop_on doesn't trigger first
   :duration: 20
   #will exit hunting if all of the skills lock - can list one or twenty-one skills
@@ -151,7 +197,7 @@ hunting_info:
   #- Skill1
 
 # True means perform a hunt right away on startup. False means wait until a round of town-training is done.
-training_manager_hunting_priority: true
+training_manager_hunting_priority: false
 # list of skills that will trigger a hunt loop if they go below the lower_limit. THIS MEANS ONLY COMBAT-SKILLS SHOULD BE ON HERE
 training_manager_priority_skills:
 #- Small Edged
@@ -584,7 +630,7 @@ shaping_tools:
 #  - elbow wraps
 #  - iron bracer
 #  - hand claws
-#  - knee spikes  
+#  - knee spikes
   #used by scripts such as ;rdc, ;udc, or ;steal
 #  stealing:
 #  - elbow wraps
@@ -614,115 +660,3 @@ hunting_file_list:
   - setup
   # - back
 
-### T2 Setup
-training_list:
-- skill:
-  - Athletics
-  start: 10
-  scripts:
-  - athletics 
-
-- skill:
-  - First Aid
-  start: 5
-  scripts:  
-  - go2 8246
-  - first-aid  
-
-#pick boxes 
-#main hunt
-- skill:
-  - Stealth
-  - Small Edged
-  - Crossbow
-  start: 15
-  scripts:
-  - go2 8246
-  - pick  
-  - hunting-buddy
-  - crossing-repair
-  - sell-loot
-
-#catchall
-- skill:
-  - Forging
-  start: 35
-  scripts:
-  - craft forging
-
-empty_values:
-  appraisal_training: []
-  loot_additions: []
-  loot_subtractions: []
-  loot_specials: []
-  dont_steal_list: []
-  waggle_sets: {}
-  buff_spells: {}
-  offensive_spells: []
-  necromancer_healing: {}
-  zombie: {}
-  empath_healing: {}
-  summoned_weapons: []
-  stances: {}
-  aim_fillers: []
-  dance_actions: []
-  dance_actions_stealth: []
-  crossing_training: []
-  research_skills: []
-  train_workorders: []
-  gear: []
-  hunting_info: []
-  mining_buddy_vein_list: []
-  training_manager_priority_skills: []
-  forging_tools: []
-  outfitting_tools: []
-  shaping_tools: []
-  tinkering_tools: []
-  carving_tools: []
-  alchemy_tools: []
-  enchanting_tools: []
-  aim_fillers_stealth: {}
-  skinning: {}
-  thanatology: {}
-  buff_nonspells: {}
-  training_abilities: {}
-  weapon_training: {}
-  priority_weapons: []
-  charged_maneuvers: {}
-  training_nonspells: {}
-  training_spells: {}
-  research_training_spells: {}
-  gear_sets: {}
-  lichbot_buffs: []
-  lockpick_buffs: {}
-  listen_skills: []
-  offensive_spell_cycle: []
-  ignored_npcs: []
-  hunting_buddies: []
-  empty_hunting_room_messages: []
-  classes_to_teach: []
-  whirlwind_trainables: []
-  aiming_trainables: []
-  astrology_training: []
-  attunement_rooms: []
-  restock: {}
-  athletics_outdoorsmanship_rooms: []
-  combat_spell_training: {}
-  stealing_towns: []
-  safe_room_empaths: []
-  crafting_training_spells: {}
-  restock_shop: {}
-  theurgy_supply_levels: {}
-  caravan_training_skills: {}
-  caravan_recipes: {}
-  almanac_skills: []
-  held_athletics_items: []
-  training_list: []
-  stabbity: {}
-  telescope_storage: {}
-  smoke: {}
-  divination_tool: {}
-  divination_bones_storage: {}
-  avtalia_array: {}
-  cornmaze_containers: {}
-  maze_junk: {}

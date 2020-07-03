@@ -95,7 +95,7 @@ module Combat
     put "loot goods"
     pause
     waitrt?
-    put "fill my dark pouch with my hide sack"
+    put "stow gem"
   end
 
   def cleanupall
@@ -108,13 +108,26 @@ module Combat
     put "loot all"
     pause
     waitrt?
-    put "fill my dark pouch with my hide sack"
+    put "stow gem"
   end
 
   def attack
     pause
     waitrt?
     put "attack"
+  end
+
+  def ambush_attack
+
+    hide
+
+    if hiding?
+      advance
+    end
+
+    if hiding?
+      attack
+    end
   end
 
   def feint
@@ -153,7 +166,6 @@ module Combat
       jab
     end
   end
-
 
   def blindside
     pause
@@ -286,8 +298,8 @@ module Combat
     # how to abstract this with the method??
     result = fput "feint", "You", "There is nothing else to face!" # 4 sec
 
-    feint 
-    feint 
+    feint
+    feint
 
     if result == "There is nothing else to face!"
       return
