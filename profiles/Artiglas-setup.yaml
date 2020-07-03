@@ -24,6 +24,7 @@ storage_containers:
 
 #skills to train while in town
 crossing_training:
+- Attunement
 - Locksmithing
 - Scholarship
 - Appraisal
@@ -33,10 +34,7 @@ crossing_training:
   #- Perception
 - Arcana
 - Theurgy
-- warding
 - primary magic
-- augmentation
-- utility
 
 
 train_with_burgle: true
