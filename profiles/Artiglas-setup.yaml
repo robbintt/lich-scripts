@@ -413,12 +413,12 @@ sell_loot_money_on_hand: 3 silver
 #hunting-buddy will maintain a minimum of storebought ammo - will need more details outside crossing
 #You can specify custom restocking, advanced feature
 restock:
-  arrow:
-    quantity: 15
-  bolt:
-    quantity: 15
-  rock:
-    quantity: 15
+  #arrow:
+  #  quantity: 15
+  #bolt:
+  #  quantity: 15
+  #rock:
+  #  quantity: 15
   #You can specify custom restocking, advanced feature
   # rock:
   #   hometown: Hibarnhvidar
