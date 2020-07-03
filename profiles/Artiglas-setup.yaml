@@ -25,11 +25,12 @@ storage_containers:
 #skills to train while in town
 crossing_training:
 - Attunement
-- Locksmithing
+- Thievery
 - Scholarship
 - Appraisal
+  #- Athletics
+  #- Locksmithing
   #- First Aid
-- Athletics
   #- Outdoorsmanship
   #- Perception
 - Arcana
@@ -54,51 +55,38 @@ gear:
   :is_worn: true
 - :name: helm
   :adjective: ring
-  :is_leather: false
   :hinders_lockpicking: true
   :is_worn: true
 - :name: gauntlets
   :adjective: plate
-  :is_leather: false
   :hinders_lockpicking: true
   :is_worn: true
 - :name: mask
   :adjective: scale
-  :is_leather: false
   :hinders_lockpicking: true
   :is_worn: true
 - :name: sipar
   :adjective: round
-  :is_leather: false
   :hinders_lockpicking: true
   :is_worn: true
-  :swappable: false
 - :name: stick
   :adjective: parry
-  :is_leather: false
   :hinders_lockpicking: false
   :is_worn: true
-  :swappable: false
 - :name: blade
   :adjective: thrusting
-  :is_leather: false
   :is_worn: false
   :wield: true
 - :name: sling
   :adjective: leather
-  :is_leather: true
   :is_worn: false
-- :name: locket
-  :adjective: filigree
-  :hinders_lockpicking: false
-  :is_leather: false
-  :is_worn: true
 
 gear_sets:
   standard:
   - round sipar
+  - parry stick
   - coarse leathers
-  - plate gauntlet
+  - plate gauntlets
   - ring helm
   - scale mask
 #  swimming:
