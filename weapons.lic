@@ -209,7 +209,8 @@ loop {
   current_skill = 'Small Edged'
   current_exp = DRSkill.getxp(current_skill)
   while DRSkill.getxp(current_skill) < (current_exp + exp_increment < exp_max ? current_exp + exp_increment : exp_max)
-    ambush_attack
+    attack
+    #ambush_attack
 
     # skip if no learning happened
     if current_exp == DRSkill.getxp(current_skill)

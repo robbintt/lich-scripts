@@ -8,8 +8,9 @@
 
 hometown: Crossing
 training_manager_hunting_priority: true
+forage_item: rock
 safe_room: 5713
-
+outdoor_room: 19162
 
 # Sell loot
 sell_loot: true
@@ -21,12 +22,24 @@ sell_loot_skip_exchange: false
 sell_loot_skip_pouch_close: false
 #sale_pouches_container: haversack
 
+full_pouch_container: "backpack"
+spare_gem_pouch_container: "haversack"
+tie_gem_pouches: true
+gem_pouch_adjective: dark
+
+# use zills or cowbell
+worn_instrument: zills
+
+# listen in your safe room
+listen: true
 
 storage_containers:
 - backpack
 - haversack
 
-# Hunting settings
+## Hunting settings
+# teach your hunting buddies
+combat_teaching_skill: Sling
 # avoid losing ammo by killing the last opponent
 skip_last_kill: false
 loot_bodies: true
@@ -40,12 +53,26 @@ empty_hunting_room_messages:
 - hello?
 stop_hunting_if_bleeding: true
 left_hand_free: true
+skinning:
+  skin: true
+  # number of arranges, only use this when skinning slows down
+  arrange_count: 0
+  # need to save on inv slots... when does this tie the bundle?
+  tie_bundle: true
 
 training_manager_priority_skills:
-- Chain Armor
 - Shield Usage
+- Leather Armor
 hunting_info:
+  #can find zones with notes in base-hunting.yaml in the data file
+  # Note: You can add multiple "overflow" zones to the list.
+  # It checks each hunting zone for an empty room before waiting
+- :zone:
+  #- wildland_goblin_riverhaven
+  #- arbelog_ram_bear_riverhaven
+  #- reavers
 - :zone: rats
+  :duration: 20
   stop_on:
   - Shield Usage
   - Parry Ability
@@ -129,9 +156,15 @@ buff_spells:
     cambrinth:
     - 1
 dance_skill: Small Edged
+aiming_trainables:
+- Tactics
+- Brawling
 training_abilities:
   Tactics: 30
+  App Quick: 30
+  Analyze: 120  #Teaches tactics
   Hunt: 80
+  Collect: 120  #adds a lot of RT
   Perc: 120
   Pray: 610
 weapon_training:
@@ -150,6 +183,7 @@ weapon_training:
   Polearms: javelin
   Staves: nightstick
   Offhand Weapon: throwing club
+# these are trained first when you enter combat
 #priority_weapons:
 #  - Bow
 #  - Crossbow
@@ -172,11 +206,15 @@ crossing_training:
 - Warding
 - Appraisal
 - Athletics
-- Perception
 - Outdoorsmanship
+- Perception
 - Attunement
+- Arcana
 - Scholarship
 - Performance
+- Thievery
+- Locksmithing
+#- First Aid
 training_spells:
   Augmentation:
     abbrev: centering
@@ -189,3 +227,43 @@ favor_god: Faenella
 water_holder: chalice
 #flint_lighter: pine-handled sledgehammer
 theurgy_supply_container: backpack
+
+# only include art for younglings in crossing
+appraisal_training:
+- pouches
+- gear
+- art
+
+# Lockpicking settings - follow it carefully to avoid springing traps!
+stop_pick_on_mindlock: true
+pick_blind: false
+use_lockpick_ring: true
+skip_lockpick_ring_refill: true
+lockpick_container: lockpick ring
+lockpick_type: stout  #use 'stout iron' if in Shard
+harvest_traps: false
+#live box source
+picking_box_source: backpack
+# Keep this empty to drop too-hard boxes on the ground
+picking_box_storage: haversack
+#pet box source
+picking_pet_box_source: haversack
+#number of boxes to make with ;pick pets
+pet_boxes_on_hand: 5
+#settings for lockpick training box to use with ;lockbox
+picking_lockbox: cabinet
+picking_worn_lockbox: false
+
+
+#list of scripts that will block ;sanowret-crystal from draining your concentration
+sanowret_no_use_scripts:
+- sew
+- carve
+- tinker
+- forge
+- remedy
+- shape
+- enchant
+- outdoorsmanship
+#- combat-trainer
+- buff
