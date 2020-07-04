@@ -112,9 +112,11 @@ gear:
 - :name: sword
   :adjective: bastard
   :is_worn: false
+  :swappable: true
 - :name: mace
   :adjective: bar
   :is_worn: false
+  :swappable: true
 - :name: nightstick
   :is_worn: false
 - :name: sling
