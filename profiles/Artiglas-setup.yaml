@@ -163,6 +163,12 @@ buff_spells:
     mana: 1
     cambrinth:
     - 1
+   Bless:
+    abbrev: bless
+    recast: 1
+    mana: 1
+    cambrinth:
+    - 1
 dance_skill: Small Edged
 aiming_trainables:
 - Tactics
@@ -228,6 +234,8 @@ training_spells:
     abbrev: centering
   Warding:
     abbrev: mpp
+  Utility:
+    abbrev: bless
 cambrinth: cambrinth ring
 cambrinth_cap: 5
 favor_goal: 25
