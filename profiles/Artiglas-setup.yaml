@@ -60,6 +60,7 @@ skinning:
   # need to save on inv slots... when does this tie the bundle?
   tie_bundle: true
 
+# list of skills that will trigger a hunt loop if they go below the lower_limit. THIS MEANS ONLY COMBAT SKILLS SHOULD BE ON HERE
 training_manager_priority_skills:
 - Shield Usage
 - Leather Armor
@@ -71,7 +72,7 @@ hunting_info:
   #- wildland_goblin_riverhaven
   #- arbelog_ram_bear_riverhaven
   #- reavers
-- :zone: rats
+  - rats
   :duration: 20
   stop_on:
   - Shield Usage
