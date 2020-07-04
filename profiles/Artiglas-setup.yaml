@@ -73,7 +73,7 @@ hunting_info:
   #- arbelog_ram_bear_riverhaven
   #- reavers
   - rats
-  :duration: 20
+  :duration: 30
   stop_on:
   - Shield Usage
   - Parry Ability
