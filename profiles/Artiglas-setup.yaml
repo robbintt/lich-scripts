@@ -7,7 +7,7 @@
 # 4 Lores (only 3 are needed to circle): Appraisal, Tactics, Scholarship
 
 hometown: Crossing
-training_manager_hunting_priority: false
+training_manager_hunting_priority: true
 forage_item: rock
 safe_room: 5713
 outdoor_room: 19162
@@ -40,6 +40,10 @@ storage_containers:
 ## Hunting settings
 # teach your hunting buddies
 combat_teaching_skill: Sling
+# how many mindstates to use a weapon for
+combat_trainer_target_increment: 3
+# how many actions to do if you dont hit the mindstate goal before swapping weapons
+combat_trainer_action_count: 10
 # avoid losing ammo by killing the last opponent
 skip_last_kill: false
 loot_bodies: true
@@ -163,12 +167,24 @@ buff_spells:
     mana: 1
     cambrinth:
     - 1
-   Bless:
+  Bless:
     abbrev: bless
     recast: 1
     mana: 1
     cambrinth:
     - 1
+offensive_spells:
+- skill: Targeted Magic
+  name: Horn of the Black Unicorn
+  abbrev: horn
+  mana: 1
+  cast_only_to_train: true
+#- skill: Debilitation
+#  name: Soul Sickness
+#  abbrev: sick
+#  mana: 1
+#  harmless: true
+
 dance_skill: Small Edged
 aiming_trainables:
 - Tactics
@@ -198,7 +214,8 @@ weapon_training:
   Staves: nightstick
   Offhand Weapon: throwing club
 # these are trained first when you enter combat
-#priority_weapons:
+priority_weapons:
+  - Targeted Magic
 #  - Bow
 #  - Crossbow
 #  - Slings
