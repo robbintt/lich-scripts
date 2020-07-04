@@ -7,7 +7,7 @@
 # 4 Lores (only 3 are needed to circle): Appraisal, Tactics, Scholarship
 
 hometown: Crossing
-training_manager_hunting_priority: true
+training_manager_hunting_priority: false
 forage_item: rock
 safe_room: 5713
 outdoor_room: 19162
