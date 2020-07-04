@@ -1,9 +1,15 @@
 # drain for a specific amount of time before exiting
-minutes = 60
+# minutes = 60
+
+# 120 mins for f2p
+minutes = 120
 
 while minutes > 0
 
   minutes = minutes - 1
+  # if not hidden hide
+  # is it the hide? function in common.lic? i forget
+  hide?
   put "exp"
   pause
   put "echo *** Draining for #{minutes} more minutes."
