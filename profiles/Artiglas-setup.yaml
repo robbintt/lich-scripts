@@ -142,6 +142,12 @@ gear_sets:
   - plate gauntlets
   - ring helm
   - scale mask
+  stealing:
+  - parry stick
+  - round sipar
+  swimming:
+  - parry stick
+  - round sipar
 
 # Combat settings
 buff_spells:
