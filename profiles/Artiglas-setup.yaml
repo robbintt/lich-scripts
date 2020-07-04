@@ -22,6 +22,26 @@ sell_loot_skip_exchange: false
 sell_loot_skip_pouch_close: false
 #sale_pouches_container: haversack
 
+#hunting-buddy will maintain a minimum of storebought ammo - will need more details outside crossing
+#You can specify custom restocking, advanced feature
+restock:
+  arrow:
+    quantity: 15
+  bolt:
+    quantity: 15
+  rock:
+    quantity: 15
+  #You can specify custom restocking, advanced feature
+  # rock:
+  #   hometown: Hibarnhvidar
+  #   name: smooth rocks
+  #   room: 12172
+  #   price: 45
+  #   size: 30
+  #   stackable: true
+  #   quantity: 30
+
+
 full_pouch_container: "backpack"
 spare_gem_pouch_container: "haversack"
 tie_gem_pouches: true
@@ -76,7 +96,8 @@ hunting_info:
   #- wildland_goblin_riverhaven
   #- arbelog_ram_bear_riverhaven
   #- reavers
-  - rats
+  #- rats
+  - fell_hogs
   :duration: 30
   stop_on:
   - Shield Usage
@@ -216,6 +237,7 @@ weapon_training:
 # these are trained first when you enter combat
 priority_weapons:
   - Targeted Magic
+  - Large Blunt
 #  - Bow
 #  - Crossbow
 #  - Slings
@@ -235,6 +257,8 @@ crossing_training:
 - Theurgy
 - Augmentation
 - Warding
+- Utility
+- Sorcery
 - Appraisal
 - Athletics
 - Outdoorsmanship
