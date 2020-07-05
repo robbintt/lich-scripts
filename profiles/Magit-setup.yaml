@@ -61,9 +61,9 @@ storage_containers:
 # teach your hunting buddies
 combat_teaching_skill: Sling
 # how many mindstates to use a weapon for
-combat_trainer_target_increment: 3
+combat_trainer_target_increment: 5
 # how many actions to do if you dont hit the mindstate goal before swapping weapons
-combat_trainer_action_count: 10
+combat_trainer_action_count: 15
 # avoid losing ammo by killing the last opponent
 skip_last_kill: false
 loot_bodies: true
@@ -136,6 +136,7 @@ gear:
 - :name: sling
   :adjective: leather
   :is_worn: false
+  :is_leather: true
 - :name: shortbow
   :adjective: yew
   :is_worn: false
@@ -278,16 +279,15 @@ crossing_training:
 #- First Aid
 training_spells:
   Augmentation:
-    abbrev: ease
+    abbrev: shadows
   Warding:
     abbrev: maf
   Utility:
-    abbrev: shadows
+    abbrev: cv
 cambrinth: cambrinth ring
 cambrinth_cap: 5
 favor_goal: 25
 favor_god: Faenella
-water_holder: chalice
 
 # only include art for younglings in crossing
 appraisal_training:
@@ -308,7 +308,7 @@ picking_box_source: backpack
 # Keep this empty to drop too-hard boxes on the ground
 picking_box_storage: backpack
 #pet box source
-picking_pet_box_source: thigh bag 
+picking_pet_box_source: thigh bag
 #number of boxes to make with ;pick pets
 pet_boxes_on_hand: 0
 #settings for lockpick training box to use with ;lockbox
