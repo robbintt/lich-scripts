@@ -331,3 +331,9 @@ burgle_settings:
   max_search_count: 1
   loot_container: "backpack"
   safe_mode: true
+
+
+# defines a spell to train sorcery if Sorcery is on your crossing-training list
+crossing_training_sorcery:
+# what room to use when training sorcery - check JUSTICE beforehand
+crossing_training_sorcery_room: 19162

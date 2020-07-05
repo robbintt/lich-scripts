@@ -42,8 +42,8 @@ restock:
   #   quantity: 30
 
 
-full_pouch_container: "backpack"
-spare_gem_pouch_container: ""
+full_pouch_container: "thigh bag"
+spare_gem_pouch_container: "backpack"
 tie_gem_pouches: true
 gem_pouch_adjective: dark
 
@@ -55,6 +55,7 @@ listen: true
 
 storage_containers:
 - backpack
+- thigh bag
 
 ## Hunting settings
 # teach your hunting buddies
@@ -95,7 +96,7 @@ hunting_info:
   #- wildland_goblin_riverhaven
   #- arbelog_ram_bear_riverhaven
   #- reavers
-  #- rats
+  - rats
   #- fell_hogs
   :duration: 30
   stop_on:
@@ -287,8 +288,6 @@ cambrinth_cap: 5
 favor_goal: 25
 favor_god: Faenella
 water_holder: chalice
-#flint_lighter: pine-handled sledgehammer
-theurgy_supply_container: backpack
 
 # only include art for younglings in crossing
 appraisal_training:
@@ -309,7 +308,7 @@ picking_box_source: backpack
 # Keep this empty to drop too-hard boxes on the ground
 picking_box_storage: backpack
 #pet box source
-picking_pet_box_source: backpack
+picking_pet_box_source: thigh bag 
 #number of boxes to make with ;pick pets
 pet_boxes_on_hand: 0
 #settings for lockpick training box to use with ;lockbox
@@ -337,3 +336,8 @@ burgle_settings:
   max_search_count: 1
   loot_container: "backpack"
   safe_mode: true
+
+# defines a spell to train sorcery if Sorcery is on your crossing-training list
+crossing_training_sorcery:
+# what room to use when training sorcery - check JUSTICE beforehand
+crossing_training_sorcery_room: 19162
