@@ -43,7 +43,7 @@ restock:
 
 
 full_pouch_container: "backpack"
-spare_gem_pouch_container: "haversack"
+spare_gem_pouch_container: ""
 tie_gem_pouches: true
 gem_pouch_adjective: dark
 
@@ -55,7 +55,6 @@ listen: true
 
 storage_containers:
 - backpack
-- haversack
 
 ## Hunting settings
 # teach your hunting buddies
@@ -97,7 +96,7 @@ hunting_info:
   #- arbelog_ram_bear_riverhaven
   #- reavers
   #- rats
-  - fell_hogs
+  #- fell_hogs
   :duration: 30
   stop_on:
   - Shield Usage
@@ -108,101 +107,106 @@ hunting_info:
 # Gear settings
 gear:
 - :name: leathers
-  :adjective: coarse
+  :adjective: rugged
   :is_leather: true
   :hinders_lockpicking: true
   :is_worn: true
-- :name: helm
-  :adjective: ring
+- :name: bascinet
   :hinders_lockpicking: true
   :is_worn: true
-- :name: gauntlets
-  :adjective: plate
+- :name: gloves
+  :adjective: chain
   :hinders_lockpicking: true
   :is_worn: true
-- :name: mask
+- :name: aventail
   :adjective: scale
   :hinders_lockpicking: true
   :is_worn: true
-- :name: sipar
-  :adjective: round
+- :name: shield
+  :adjective: target
   :hinders_lockpicking: true
   :is_worn: true
 - :name: stick
   :adjective: parry
   :hinders_lockpicking: false
   :is_worn: true
-- :name: blade
-  :adjective: thrusting
-  :is_worn: false
-- :name: sword
-  :adjective: bastard
-  :is_worn: false
-  :swappable: true
-- :name: mace
-  :adjective: bar
-  :is_worn: false
-  :swappable: true
-- :name: nightstick
-  :is_worn: false
+
+# weapons
 - :name: sling
   :adjective: leather
   :is_worn: false
 - :name: shortbow
-  :adjective: nisha
+  :adjective: yew
   :is_worn: false
-- :name: pelletbow
+- :name: crossbow
+  :adjective: light
   :is_worn: false
-- :name: javelin
+
+- :name: scimitar
+  :adjective: steel
   :is_worn: false
-- :name: club
-  :adjective: throwing
-  :is_worn: false
+#- :name: blade
+#  :adjective: thrusting
+#  :is_worn: false
+#- :name: nightstick
+#  :is_worn: false
+#- :name: sword
+#  :adjective: bastard
+#  :is_worn: false
+#  :swappable: true
+#- :name: mace
+#  :adjective: bar
+#  :is_worn: false
+#  :swappable: true
+#- :name: javelin
+#  :is_worn: false
+#- :name: club
+#  :adjective: throwing
+#  :is_worn: false
 
 
 gear_sets:
   standard:
-  - round sipar
+  - target shield
   - parry stick
-  - coarse leathers
-  - plate gauntlets
-  - ring helm
-  - scale mask
+  - rugged leathers
+  - chain gloves
+  - bascinet
+  - scale aventail
   stealing:
   - parry stick
   swimming:
   - parry stick
-  - round sipar
 
 # Combat settings
 buff_spells:
-  Centering:
-    abbrev: centering
+  Ease Burden:
+    abbrev: ease
     recast: 1
     mana: 1
     cambrinth:
     - 1
-  Minor Physical Protection:
-    abbrev: mpp
+  Manifest Force:
+    abbrev: maf
     recast: 1
     mana: 1
     cambrinth:
     - 1
-  Bless:
-    abbrev: bless
+  Shadows:
+    abbrev: shadows
     recast: 1
     mana: 1
     cambrinth:
     - 1
 offensive_spells:
 - skill: Targeted Magic
-  name: Horn of the Black Unicorn
-  abbrev: horn
+  name: Strange Arrow
+  abbrev: stra
   mana: 1
   cast_only_to_train: true
 - skill: Debilitation
-  name: Soul Sickness
-  abbrev: sick
+  name: burden
+  abbrev: burden
   mana: 1
   harmless: true
 
@@ -220,30 +224,32 @@ training_abilities:
   Pray: 610
 weapon_training:
   Brawling: ''
-  Bow: nisha shortbow
-  Crossbow: pelletbow
+  Bow: yew shortbow
+  Crossbow: light crossbow
   Slings: leather sling
-  Heavy Thrown: javelin
-  Light Thrown: throwing club
-  Small Blunt: throwing club
-  Large Blunt: bar mace
-  Twohanded Blunt: bar mace
-  Small Edged: thrusting blade
-  Large Edged: bastard sword
-  Twohanded Edged: bastard sword
-  Polearms: javelin
-  Staves: nightstick
-  Offhand Weapon: throwing club
+  #Heavy Thrown: javelin
+  #Light Thrown: throwing club
+  #Small Blunt: throwing club
+  #Large Blunt: bar mace
+  #Twohanded Blunt: bar mace
+  Small Edged: steel scimitar
+  #Small Edged: thrusting blade
+  #Large Edged: bastard sword
+  #Twohanded Edged: bastard sword
+  #Polearms: javelin
+  #Staves: nightstick
+  #Offhand Weapon: throwing club
 # these are trained first when you enter combat
 priority_weapons:
 #  - Targeted Magic
+#  - Large Blunt
 #  - Bow
 #  - Crossbow
 #  - Slings
 #  - Heavy Thrown
 #  - Light Thrown
 #  - Small Blunt
-  - Large Blunt
+#  - Large Blunt
 #  - Twohanded Blunt
 #  - Small Edged
 #  - Large Edged
@@ -253,7 +259,7 @@ priority_weapons:
 #  - Offhand Weapon
 # Non-combat settings
 crossing_training:
-- Theurgy
+- Astrology
 - Augmentation
 - Warding
 - Utility
@@ -271,11 +277,11 @@ crossing_training:
 #- First Aid
 training_spells:
   Augmentation:
-    abbrev: centering
+    abbrev: ease
   Warding:
-    abbrev: mpp
+    abbrev: maf
   Utility:
-    abbrev: bless
+    abbrev: shadows
 cambrinth: cambrinth ring
 cambrinth_cap: 5
 favor_goal: 25
@@ -301,11 +307,11 @@ harvest_traps: false
 #live box source
 picking_box_source: backpack
 # Keep this empty to drop too-hard boxes on the ground
-picking_box_storage: haversack
+picking_box_storage: backpack
 #pet box source
-picking_pet_box_source: haversack
+picking_pet_box_source: backpack
 #number of boxes to make with ;pick pets
-pet_boxes_on_hand: 5
+pet_boxes_on_hand: 0
 #settings for lockpick training box to use with ;lockbox
 picking_lockbox: cabinet
 picking_worn_lockbox: false
